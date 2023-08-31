@@ -139,6 +139,3 @@ SELECT
     COUNT(taux_commission) AS nombre_taux_commission_renseignes
 FROM employe;
 -- Affiche le nombre de salaires renseignés et le nombre de taux de commission renseignés
-
-
-

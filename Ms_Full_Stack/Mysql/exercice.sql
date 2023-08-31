@@ -1,6 +1,6 @@
 --  exercice 1 
 Select * from employe;
--- Affiche toutes les informations concernants les employés 
+-- Affic-he toutes les informations concernants les employés 
 
 -- Exercice 2 
 SELECT * from dept;
