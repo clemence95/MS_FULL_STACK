@@ -51,7 +51,7 @@
         $mot_de_passe_valide = complex_password($mot_de_passe);
 
         if ($mot_de_passe_valide) {
-            echo "Inscription réussie !";
+            echo "Inscription réussie!";
         } else {
             echo "Le mot de passe ne respecte pas les critères de complexité.";
         }
