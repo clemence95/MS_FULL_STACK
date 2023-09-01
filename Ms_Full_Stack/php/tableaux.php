@@ -94,7 +94,10 @@
     echo "Nombre de pays dans le tableau : $nombreDePays";
     //Affiche le nombre de pays das le tableaux
 
-    
+    echo "<br>";
+
+    //Exercice 5 
+    echo "<br>";
     ksort($capitales);
 
     // Boucle pour supprimer les capitales ne commençant pas par 'B'
@@ -109,6 +112,32 @@
         echo "$pays - $capitale <br>";
     }
 
+    $departements = array(
+        "Hauts-de-france" => array("Aisne", "Nord", "Oise", "Pas-de-Calais", "Somme"),
+        "Bretagne" => array("Côtes d'Armor", "Finistère", "Ille-et-Vilaine", "Morbihan"),
+        "Grand-Est" => array("Ardennes", "Aube", "Marne", "Haute-Marne", "Meurthe-et-Moselle", "Meuse", "Moselle", "Bas-Rhin", "Haut-Rhin", "Vosges"),
+        "Normandie" => array("Calvados", "Eure", "Manche", "Orne", "Seine-Maritime")
+    );
+
+    //Exercice 6
+    // Triez les régions par ordre alphabétique
+    echo "<br>";
+    ksort($departements);
+
+    // Parcourez les régions et affichez les départements pour chaque région
+    foreach ($departements as $region => $departementArray) {
+        echo "$region : ";
+        echo implode(", ", $departementArray);
+        echo "<br>";
+    }
+    //Exercice 7
+    // Parcourez les régions et affichez le nom de la région suivi du nombre de départements
+    echo "<br>";
+    foreach ($departements as $region => $departementArray) {
+        $nombreDepartements = count($departementArray);
+        echo "$region : $nombreDepartements départements";
+        echo "<br>";
+    }
 
     ?>
 </body>
