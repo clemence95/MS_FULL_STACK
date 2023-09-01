@@ -86,13 +86,15 @@
         echo "$pays - $capitale <br>";
     }
     echo "<br>";
-    ksort($capitales);
 
+    //Exercice 3
+    ksort($capitales);
     // Comptez le nombre de pays dans le tableau
     $nombreDePays = count($capitales);
-
     echo "Nombre de pays dans le tableau : $nombreDePays";
+    //Affiche le nombre de pays das le tableaux
 
+    
     ksort($capitales);
 
     // Boucle pour supprimer les capitales ne commençant pas par 'B'
