@@ -58,6 +58,7 @@
     }
 
     //Exercice 5
+    echo "<br>";
     $dateActuelle = new DateTime();
     $heure = $dateActuelle->format('H');
     $minute = $dateActuelle->format('i');
