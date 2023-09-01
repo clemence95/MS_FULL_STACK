@@ -47,7 +47,7 @@
     } else {
         echo "$annee n'est pas une année bissextile.";
     }
-     
+
     //Exercice 4
     echo "<br>";
     try {
@@ -56,7 +56,14 @@
     } catch (Exception $e) {
         echo 'La date est erronée : ' . $e->getMessage();
     }
-    
+
+    //Exercice 5
+    $dateActuelle = new DateTime();
+    $heure = $dateActuelle->format('H');
+    $minute = $dateActuelle->format('i');
+
+    echo "$heure" . 'h' . "$minute";
+
 
     ?>
 </body>
