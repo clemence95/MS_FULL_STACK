@@ -69,21 +69,45 @@
         "Vilnius" => "Lituanie",
         "Zagreb" => "Croatie"
     );
-
+    // Exercice 1 
     asort($capitales);
-    
-foreach ($capitales as $capitale => $pays) {  
+
+    foreach ($capitales as $capitale => $pays) {
         echo "$capitale - $pays <br>";
     }
 
-    echo "<br>";ksort($capitales); "<br>";
+    echo "<br>";
+    ksort($capitales);
+    "<br>";
+    //Affiche la liste des capitales par ordre alphabétique suivie du nom du pays
 
-    // Parcourez le tableau trié et affichez les pays et les capitales
+    // Exercice 2
     foreach ($capitales as $capitale => $pays) {
         echo "$pays - $capitale <br>";
-        
     }
     echo "<br>";
+    ksort($capitales);
+
+    // Comptez le nombre de pays dans le tableau
+    $nombreDePays = count($capitales);
+
+    echo "Nombre de pays dans le tableau : $nombreDePays";
+
+    ksort($capitales);
+
+    // Boucle pour supprimer les capitales ne commençant pas par 'B'
+    foreach ($capitales as $capitale => $pays) {
+        if (substr($capitale, 0, 1) !== 'B') {
+            unset($capitales[$capitale]);
+        }
+    }
+
+    // Affichez le contenu du tableau après la suppression
+    foreach ($capitales as $capitale => $pays) {
+        echo "$pays - $capitale <br>";
+    }
+
+
     ?>
 </body>
 
