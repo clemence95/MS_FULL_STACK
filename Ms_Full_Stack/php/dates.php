@@ -65,7 +65,21 @@
 
     echo "$heure" . 'h' . "$minute";
 
+    //Exercice 6
+    echo "<br>";
+    $dateActuelle = new DateTime();
+    $dateActuelle->add(new DateInterval('P1M')); // Ajoute 1 mois
+    echo $dateActuelle->format('Y-m-d'); // Affiche la nouvelle date
 
+    //Exercice 7 
+    echo "<br>";
+    $timestamp = 1000200000;
+    $date = new DateTime("@$timestamp");
+    echo $date->format('Y-m-d H:i:s');
+    // la date et l'heure associées au timestamp "1000200000".
+    //Un timestamp est une valeur numérique qui représente un point spécifique dans le temps.
+    // En informatique, les timestamps sont généralement utilisés pour enregistrer des dates et des heures de manière standardisée,
+    // indépendamment de la zone horaire.
     ?>
 </body>
 
