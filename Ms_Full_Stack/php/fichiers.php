@@ -37,7 +37,7 @@
             </thead>
             <?php
             // Lire le fichier CSV
-            $fichier_csv = fopen('/home/clemence/Bureau/TBDA/MS_FULL_STACK/Ms_Full_Stack/php/customers.csv', 'r');
+            $fichier_csv = fopen('/MS_FULL_STACK/Ms_Full_Stack/php/fichiers.php ', 'r');
 
             // Vérifier si le fichier CSV a été ouvert avec succès
             if ($fichier_csv !== false) {
