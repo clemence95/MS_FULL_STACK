@@ -21,6 +21,7 @@
         echo "Erreur lors de la lecture du fichier.";
     }
     ?>
+    <!-- Exercice 2 -->
     <div class="container">
         <h2>Exemple de tableau en PHP et Bootstrap avec CSV</h2>
         <table class="table table-bordered">
@@ -41,7 +42,7 @@
             // Vérifier si le fichier CSV a été ouvert avec succès
             if ($fichier_csv !== false) {
                 // Boucle pour lire les lignes du fichier CSV
-                while (($ligne = fgetcsv($fichier_csv)) !== false) {
+                while (($ligne = fgetcsv($fichier_csv)) !== false) { //fgetcsv() analyse la ligne et recherche les champs CSV qu'il retourne dans le tableau
                     echo '<tr>';
                     echo '<td>' . $ligne[0] . '</td>';
                     echo '<td>' . $ligne[1] . '</td>';
