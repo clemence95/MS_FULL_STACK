@@ -20,46 +20,48 @@
     } else {
         echo "Erreur lors de la lecture du fichier.";
     }
-
-    //Exercice 2
-    //Chemin vers le fichier  
-    $fichier ='customers.csv';
-
-    //Lecture du contenu du fichier
-    $contenuCSV = file($fichier);
-
-    //Tableau pour stocker les utilisateurs
-    $utilisateurs = [];
-
-    //Parcourir chaque ligne du fichier CSV
-    foreach ($contenuCSV as $lignes){
-        // Découpe la ligne en utilisant la virgule comme séparateur
-        $utilisateur = explode(',',$lignes);
-
-        //Ajoute l'utilisateur au tableau
-        $utilisateurs[] = $utilisateur;
-    }
-    
-    //Affichage du Tableau
-    echo'<table class="table table-bordered">';
-    echo'<thead><tr>Surname</th><th>Firstname</th><th>Email</th><th>Phone</th><th>State</th></tr></thead>';
-    echo'<tbody>';
-    foreach ($utilisateurs as $utilisateur) {
-        echo '<tr>';
-        echo '<td>' . $utilisateur[0] . '</td>';
-        echo '<td>' . $utilisateur[1] . '</td>';
-        echo '<td>' . $utilisateur[2] . '</td>';
-        echo '<td>' . $utilisateur[3] . '</td>';
-        echo '<td>' . $utilisateur[4] . '</td>';
-        echo '<td>' . $utilisateur[5] . '</td>';
-        echo '</tr>';
-        }
-        echo '</tbody>';
-        echo '</table>';
-
     ?>
+    <div class="container">
+        <h2>Exemple de tableau en PHP et Bootstrap avec CSV</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Ville</th>
+                    <th>Etat</th>
+                </tr>
+            </thead>
+            <?php
+            // Lire le fichier CSV
+            $fichier_csv = fopen('/home/clemence/Bureau/TBDA/MS_FULL_STACK/Ms_Full_Stack/php/customers.csv', 'r');
 
-   
+            // Vérifier si le fichier CSV a été ouvert avec succès
+            if ($fichier_csv !== false) {
+                // Boucle pour lire les lignes du fichier CSV
+                while (($ligne = fgetcsv($fichier_csv)) !== false) {
+                    echo '<tr>';
+                    echo '<td>' . $ligne[0] . '</td>';
+                    echo '<td>' . $ligne[1] . '</td>';
+                    echo '<td>' . $ligne[2] . '</td>';
+                    echo '<td>' . $ligne[3] . '</td>';
+                    echo '<td>' . $ligne[4] . '</td>';
+                    echo '<td>' . $ligne[5] . '</td>';
+                    echo '</tr>';
+                }
+
+                // Fermer le fichier CSV
+                fclose($fichier_csv);
+            } else {
+                echo 'Impossible d\'ouvrir le fichier CSV.';
+            }
+            ?>
+
+            </tbody>
+        </table>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
