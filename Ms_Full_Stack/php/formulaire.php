@@ -20,40 +20,40 @@
         include '../assets/php/nav.php';
         ?>
     </nav>
-   <?php
-   include '../assets/php/banner.php';
-   ?>
-    <form class=" row g-3 needs-validation" novalidate>
+    <?php
+    include '../assets/php/banner.php';
+    ?>
+    <form class=" row g-3 needs-validation" novalidate method="post">
         <div class="col-md-3 mb-4">
-            <input type="text" class="form-control" placeholder="Prénom" aria-label="prenom" id="validationCustom01" required>
+            <input type="text" class="form-control" placeholder="Prénom" aria-label="prenom" id="validationCustom01" name="prenom" required>
             <div class="invalid-feedback">
                 Vous devez saisir votre Prénom
             </div>
         </div>
         <div class="col-md-3 mb-4">
-            <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="validationCustom02" required>
+            <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="validationCustom02" name="nom" required>
             <div class="invalid-feedback">
                 Vous devez saisir votre Nom
             </div>
         </div>
-        <div class="row g-3">
             <div class="col-md-4 mb-4">
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email" required>
                 <div class="invalid-feedback">
                     Saisir une adresse email valide
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <input type="tel" class="form-control" placeholder="Téléphone" id="exampleInputPassword1" required>
+                <input type="tel" class="form-control" placeholder="Téléphone" id="exampleInputPassword1" name=telephone required>
                 <div class="invalid-feedback">
                     Saisir votre numéro de téléphone
                 </div>
             </div>
         </div>
-        <div class="col-md-10 mb-4">
-            <textarea class="form-control" placeholder="Votre demande" id="floatingTextarea2" style="height: 100px" required></textarea>
-            <div class="invalid-feedback">
-                Saisir votre demande
+            <div class="col-md-10 mb-4">
+                <textarea class="form-control" placeholder="Votre demande" id="floatingTextarea2" style="height: 100px" name="demande" required></textarea>
+                <div class="invalid-feedback">
+                    Saisir votre demande
+                </div>
             </div>
         </div>
         <div class="col-md-10">
@@ -63,10 +63,10 @@
 
     <footer>
         <?php
-        include './php/footer.php';
+        include '../assets/php/footer.php';
         ?>
     </footer>
-    <script src="/Clemence_MSDIW/FRONT/DYNAMIQUE/JAVASCRIPT/script.js"></script>
+    <script src="/Ms_Full_Stack/assets/script.js/script.js"></script>
 </body>
 
 </html>
