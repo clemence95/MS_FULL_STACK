@@ -23,7 +23,7 @@
     <?php
     include '../assets/php/banner.php';
     ?>
-    <form class=" row g-3 needs-validation" novalidate method="post" action="Ms_Full_Stack\assets\php\traitement.php">
+    <form class=" row g-3 needs-validation" novalidate method="post" action="Ms_Full_Stack/assets/php/traitement.php">
         <div class="col-md-3 mb-4">
             <input type="text" class="form-control" placeholder="Prénom" aria-label="prenom" id="validationCustom01" name="prenom" required>
             <div class="invalid-feedback">
