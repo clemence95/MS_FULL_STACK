@@ -8,5 +8,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $telephone = $_POST["telephone"];
     $demande = $_POST["demande"];
 
-    //
+    echo "Nom : " . $nom . "<br>";
+    echo "Prénom : " . $prenom . "<br>";
+    echo "Email : " . $email . "<br>";
+    echo "telephone : " . $telephone . "<br>";
+    echo "demande : " . $demande . "<br>";
 }
