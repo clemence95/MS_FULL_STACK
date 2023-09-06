@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $file_name = $_FILES["file"]["name"];
 
         // Déplacer le fichier vers un emplacement permanent
-        $upload_dir = "uploads/"; // Répertoire de destination
+        $upload_dir = "upload.php"; // Répertoire de destination
         $target_file = $upload_dir . $file_name;
 
         if (move_uploaded_file($tmp_file, $target_file)) {
