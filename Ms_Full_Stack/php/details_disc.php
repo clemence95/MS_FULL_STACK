@@ -1,8 +1,13 @@
 <?php
-    $db = new PDO('mysql:host=localhost;charset=utf8;dbname=record', 'root', '');
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    try {
+        $pdo = new PDO("mysql:host=localhost;dbname=record", "root", "");
+        // Utilisez $pdo pour interagir avec la base de données.
+    } catch (PDOException $e) {
+        die("Erreur de connexion à la base de données : " . $e->getMessage());
+    }
+    
 
-    $requete = $db->prepare("select * from disc where disc_id=?");
+    $requete = $db->prepare("SELECT * FROM disc WHERE disc_id = :disc_id");
     $requete->execute(array($_GET["disc_id"]));
     $disc = $requete->fetch(PDO::FETCH_OBJ);
 ?>
