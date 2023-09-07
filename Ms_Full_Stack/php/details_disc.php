@@ -7,7 +7,9 @@
     }
     
 
-    $requete = $db->prepare("SELECT * FROM disc WHERE disc_id = :disc_id");
+    $requete = $db->prepare("SELECT d.disc_id, d.disc_title, d.disc_year, d.disc_picture, d.disc_label, d.disc_genre, d.disc_price, a.artist_name
+    FROM disc AS d
+    INNER JOIN artist AS a ON d.artist_id = a.artist_id");
     $requete->execute(array($_GET["disc_id"]));
     $disc = $requete->fetch(PDO::FETCH_OBJ);
 ?>
