@@ -1,10 +1,15 @@
 <?php
-    $db = new PDO('mysql:host=localhost;charset=utf8;dbname=record', 'root', '');
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$servername = "localhost";
+$username = "admin";
+$password = "Afpa1234";
+$dbname = "record";
 
-    $requete = $db->prepare("select * from disc where disc_id= disc_id");
-    $requete->execute(array($_GET["disc_id"]));
-    $disc = $requete->fetch(PDO::FETCH_OBJ);
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("La connexion à la base de données a échoué : " . $e->getMessage());
+}
 ?>
 <html>
 <head>
@@ -13,8 +18,6 @@
 </head>
 <html>
 <body>
-    Disc N° <?= $disc->disc_id ?>
-    Disc name <?= $disc->disc_name ?>
-    Disc year <?= $disc->disc_year ?>
+   
 </body>
 </html>
