@@ -32,8 +32,8 @@
     <?php
     // Informations de connexion à la base de données
     $serveur = 'localhost';
-    $utilisateur = 'admin';
-    $motDePasse = 'Afpa1234';
+    $utilisateur = 'root';
+    $motDePasse = '';
     $baseDeDonnees = 'record';
 
     try {
