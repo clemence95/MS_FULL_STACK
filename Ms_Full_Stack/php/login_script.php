@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Authentification échouée, détruire la session
         session_destroy();
-        header("Location: login_form.php?erreur=1"); // Rediriger avec un message d'erreur
+        $erreur_message = "Identifiants incorrects. Veuillez réessayer.";
+        header("Location: login_form.php?erreur=" . urlencode($erreur_message)); // Rediriger avec un message d'erreur
     }
 }
 ?>
