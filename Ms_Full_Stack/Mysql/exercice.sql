@@ -113,7 +113,7 @@ SELECT SUBSTRING(nom, 1, 5) AS "5 Premières Lettres" FROM employe;
 --Affiche les 5 premières lettres du nom des employés
 
 --Exercice 30
-SELECT nom, POSITION('r' IN nom) AS rang_de_r FROM employe WHERE POSITION('r' IN nom) > 0;
+--SELECT nom, POSITION('r' IN nom) AS rang_de_r FROM employe WHERE POSITION('r' IN nom) > 0;
 --Affiche le nom et le rang de la lettre "r" dans le nom des employés
 
 --Exercice 31
