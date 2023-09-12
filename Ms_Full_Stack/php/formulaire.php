@@ -48,14 +48,6 @@
                     Saisir votre numéro de téléphone
                 </div>
             </div>
-        </div>
-            <div class="col-md-10 mb-4">
-                <textarea class="form-control" placeholder="Votre demande" id="floatingTextarea2" style="height: 100px" name="demande" required></textarea>
-                <div class="invalid-feedback">
-                    Saisir votre demande
-                </div>
-            </div>
-        </div>
         <div class="col-md-10">
             <button type="submit" class="btn btn-primary" id="valide">Valider</button>
         </div>

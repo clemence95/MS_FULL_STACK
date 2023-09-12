@@ -4,13 +4,14 @@ session_start();
 // Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Remplacez ces valeurs par les véritables identifiants de l'utilisateur
-    $identifiant_correct = "admin";
-    $mot_de_passe_correct = "admin";
-
     $login = $_POST["login"];
     $password = $_POST["password"];
 
-    if ($login == $identifiant_correct && $password == $mot_de_passe_correct) {
+    // Exemple de vérification simple (pour des fins de démonstration uniquement)
+    $expectedLogin = "admin";
+    $expectedPasswordHash = password_hash("admin", PASSWORD_DEFAULT); // mot de passe haché
+
+    if ($login == $expectedLogin && password_verify($password, $expectedPasswordHash)) {
         // Authentification réussie, initialisation de la session
         $_SESSION["auth"] = "ok";
         header("Location: page_protegee.php"); // Rediriger vers la page protégée
