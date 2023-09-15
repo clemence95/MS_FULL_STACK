@@ -1,0 +1,17 @@
+{
+    "name": "vendor/clemence",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Clemence\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Boitelle Clémence",
+            "email": "boitelleclemence@outlook.fr"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+}
