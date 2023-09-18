@@ -1,0 +1,147 @@
+.dancing {
+    font-family: 'Dancing Script' !important;
+    color: white;
+}
+
+.Lugrasino {
+    font-family: 'Lugrasimo', sans-serif !important;
+}
+
+* {
+    font-family: 'Lugrasimo', sans-serif !important;
+    text-decoration: none !important;
+}
+
+.cc-navbar .nav-link {
+    border-bottom: 1px solid transparent;
+    transition: padding-bottom .4s ease-in-out, border-color .3s ease;
+    /* evenement transition */
+}
+
+.cc-navbar .nav-link:hover {
+    /*effet de la trasition*/
+    padding-bottom: 20px;
+    border-bottom-color: var(--bs-teal);
+    /* couleur de boots qui color la barre de la box du bas */
+}
+
+.cc-navbar {
+    background-color: rgb(0, 0, 0, .55);
+    font-family: serif;
+    box-shadow: 1px 1px 3px rgba(255, 255, 255, .54);
+    /* padding-top: 0; */
+    height: 100px;
+    z-index: 99;
+}
+
+.btn-order {
+    color: var(--bs-teal);
+    border-color: var(--bs-teal);
+    transition: .5s;
+}
+
+.btn-order:hover,
+.btn-order:active {
+    color: white;
+    background-color: var(--bs-teal);
+
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/bg2.jpeg') center center fixed no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 1;
+}
+
+a {
+    color:darkgray;
+    /* Couleur de lien par défaut */
+    transition: color 0.3s ease;
+    /* Ajoute une transition à la couleur */
+}
+
+a:hover {
+    color: #ff9900;
+    /* Nouvelle couleur lorsque survolé */
+}
+
+.banner {
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+}
+
+.video-container {
+    width: 100%;
+    height: 30vh;
+}
+
+.video {
+    object-fit: cover;
+}
+
+.banner .banner-desc {
+    font-size: 40px;
+    font-weight: 400;
+    color: white;
+}
+
+.img-logo {
+    width: 160px;
+    height: 160px;
+}
+
+.custom-card-body {
+    padding: 10px;
+    /* Ajustez la valeur selon vos besoins */
+}
+
+/* Ajoutez ce style à votre feuille de style CSS */
+.custom-image {
+    width: 100%; /* Largeur fixe */
+    height: 300px; /* Hauteur ajustée automatiquement pour maintenir les proportions */
+    object-fit: cover;
+}
+
+.Catégories {
+    font-size: 36px;
+}
+
+form {
+    color: aliceblue;
+    font-size: 20px;
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 150px;
+    padding-top: 150px;
+    justify-content: center;
+
+}
+
+.invalid-feedback {
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 1em rgb(255, 255, 255), 0 0 0.2em rgb(0, 0, 0);
+}
+
+.footer {
+    background-color: rgb(0, 0, 0, .55);
+    width: 100%;
+    bottom: 0;
+    height: 4rem;
+    z-index: 99;
+}
+
+.footer ul li a {
+    color: white;
+    font-size: 30px;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer ul li a:hover {
+    color: rgb(172, 97, 97);
+    width: 100%;
+}
