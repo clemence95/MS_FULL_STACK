@@ -1,47 +1,49 @@
-function validerFormulaire() {
-    const nom = document.getElementById("nom").value;
-    const prenom = document.getElementById("prenom").value;
-    var regexEmail = /\S+@\S+\.\S+/;
-    const telephone = document.getElementById("telephone").value;
-    
+const prenom = document.getElementById("prenom").value;
+const nom = document.getElementById("nom").value;
+const email = document.getElementById("email").value;
+const telephone = document.getElementById("telephone").value;
+const demande = document.getElementById("demande").value;
+var regexEmail = /\S+@\S+\.\S+/;
 
-    if (nom.length < 1) {
-      alert("Veuillez marquer votre nom de famille (obligatoire!)");
-      return false;
+let valid = true;
+
+let form = document.querySelector('#formulaire_contact');
+form.addEventListener('submit', (event) => {
+
+    if (!form.nom.value) {
+        let error = document.querySelector('#nom_error');
+        event.preventDefault();
+        error.textContent = "le champ est obligatoire"
+        error.style.color = "red"
     }
 
-    if (prenom.length < 1) {
-      alert("Veuillez marquer votre prénom (obligatoire!)");
-      return false;
+    if (!form.prenom.value) {
+        let error = document.querySelector('#prenom_error');
+        event.preventDefault();
+        error.textContent = "le champ est obligatoire"
+        error.style.color = "red"
     }
 
-    if (date.length == false) {
-      alert("Veuillez entrer votre année de naissance (obligatoire!)");
-      return false;
+    if (!form.email.value) {
+        let error = document.querySelector('#mail_error')
+        event.preventDefault();
+        error.textContent = "le champ est obligatoire"
+        error.style.color = "red"
     }
 
-    if (codepostal.length != 5) {
-      alert("Veuillez marquer votre code postale ! il ne doit y avoir que 5 caractère (obligatoire!)");
-      return false;
+    if (!form.demande.value) {
+        let error = document.querySelector('#demande_error')
+        event.preventDefault();
+        error.textContent = "le champ est obligatoire"
+        error.style.color = "red"
     }
 
-    if (adresse.length < 1) {
-      alert("Veuillez marquer votre adresse (obligatoire!)");
-      return false;
+    if (!form.question.value) {
+        let error = document.querySelector('#question_error')
+        event.preventDefault();
+        error.textContent = "le champ est obligatoire"
+        error.style.color = "red"
     }
-
-    if (ville.length < 1) {
-      alert("Veuillez marquer votre ville (obligatoire!)");
-      return false;
-    }
-
-    if (!regexEmail.test(email)) {
-      alert("L'e-mail doit comporter au moins le caractère @. (obligatoire!)");
-      return false;
-    }
-    return true;
-  }
-  const form = document.querySelector('form');
-  function resetForm() {
-    form.reset();
-  }
+}
+)
+ 

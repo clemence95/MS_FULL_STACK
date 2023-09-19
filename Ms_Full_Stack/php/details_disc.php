@@ -2,19 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Liste des Disques</title>
-    <!-- Ajoutez la référence au fichier Bootstrap CSS (à télécharger ou à partir d'un CDN) -->
+    <title>Détails du Disque</title>
+    <!-- Ajouter la référence au fichier Bootstrap CSS (à télécharger ou à partir d'un CDN) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         /* Ajoutez du CSS pour mettre en forme les éléments */
-        .disque-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
         .disque {
-            width: 48%; /* Pour afficher deux disques par ligne avec un petit espace entre eux */
-            margin-bottom: 20px; /* Espacement entre les lignes de disques */
             display: flex;
             align-items: center;
         }
@@ -30,54 +23,73 @@
 </head>
 <body>
     <?php
-    // Informations de connexion à la base de données
-    $serveur = 'localhost';
-    $utilisateur = 'admin';
-    $motDePasse = 'Afpa1234';
-    $baseDeDonnees = 'record';
+    // Inclure le fichier de connexion à la base de données
+    include("./connexion_bdd.php");
 
-    try {
-        // Connexion à la base de données
-        $conn = new PDO("mysql:host=$serveur;dbname=$baseDeDonnees", $utilisateur, $motDePasse);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Vérifier si l'ID du disque est spécifié dans l'URL
+    if (isset($_GET['disc_id'])) {
+        $disc_id = $_GET['disc_id'];
 
-        // Requête SQL pour récupérer les enregistrements de la table "disc"
-        $sql = "SELECT disc_id, disc_title, disc_year, disc_picture, disc_genre, disc_label FROM disc";
+        // Requête SQL pour récupérer les détails du disque
+        $sql = "SELECT disc_title, disc_year, disc_picture, disc_genre, disc_label, disc_price, artist_id FROM disc WHERE disc_id = :disc_id";
 
-        $result = $conn->query($sql);
+        try {
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":disc_id", $disc_id);
+            $stmt->execute();
 
-        // Vérification de la réussite de la requête
-        if ($result->rowCount() > 0) {
-            $count = 0;
-            echo '<h1>Liste des Disques (' . $result->rowCount() . ' disques)</h1>';
-            echo '<a class="btn btn-primary" href="add_form.php">Ajouter</a><hr>'; // Bouton Ajouter
-            echo '<div class="disque-container">';
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            if ($stmt->rowCount() > 0) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $titre = $row['disc_title'];
+                $annee = $row['disc_year'];
+                $image = $row['disc_picture'];
+                $genre = $row['disc_genre'];
+                $label = $row['disc_label'];
+                $prix = $row['disc_price'];
+                $artist_id = $row['artist_id'];
+
+                // Requête SQL pour récupérer le nom de l'artiste
+                $sqlArtiste = "SELECT artist_name FROM artist WHERE artist_id = :artist_id";
+                $stmtArtiste = $conn->prepare($sqlArtiste);
+                $stmtArtiste->bindParam(":artist_id", $artist_id);
+                $stmtArtiste->execute();
+
+                if ($stmtArtiste->rowCount() > 0) {
+                    $rowArtiste = $stmtArtiste->fetch(PDO::FETCH_ASSOC);
+                    $artiste = $rowArtiste['artist_name'];
+                } else {
+                    $artiste = "Artiste inconnu";
+                }
+
+                echo '<h1>Détails du Disque</h1>';
                 echo '<div class="disque">';
-                echo '<img src="img/' . $row['disc_picture'] . '" alt="Image du disque">';
+                echo '<img src="img/' . $image . '" alt="Image du disque">';
                 echo '<div class="details">';
-                echo '<b>' . $row['disc_title'] . '</b>';
-                echo '<p>Année : ' . $row['disc_year'] . '</p>';
-                echo '<p>Genre : ' . $row['disc_genre'] . '</p>';
-                echo '<p>Label : ' . $row['disc_label'] . '</p>';
-                echo '<a class="btn btn-primary" href="detail.php?disc_id=' . $row['disc_id'] . '">Détail</a>'; // Bouton Détail
+                echo '<b>' . $titre . '</b>';
+                echo '<p>Artiste : ' . $artiste . '</p>';
+                echo '<p>Année : ' . $annee . '</p>';
+                echo '<p>Genre : ' . $genre . '</p>';
+                echo '<p>Label : ' . $label . '</p>';
+                echo '<p>Prix : $' . $prix . '</p>'; // Affichage du prix
+                echo '<a class="btn btn-primary" href="update_form.php?disc_id=' . $disc_id . '">Modifier</a>';
+                echo '<a class="btn btn-danger" href="delete_form.php?disc_id=' . $disc_id . '">Supprimer</a>'; // Lien de suppression
+                echo '<a class="btn btn-secondary" href="index.php">Retour</a>';
                 echo '</div>';
                 echo '</div>';
-                $count++;
+            } else {
+                echo "Aucun enregistrement trouvé pour cet ID de disque.";
             }
-            echo '</div>';
-        } else {
-            echo '<h1>Liste des Disques (0 disque)</h1>';
-            echo "Aucun enregistrement trouvé dans la table 'disc'.";
+        } catch (PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
         }
-    } catch (PDOException $e) {
-        echo "Erreur de connexion à la base de données : " . $e->getMessage();
+    } else {
+        echo "ID de disque non spécifié.";
     }
 
     // Fermeture de la connexion à la base de données
     $conn = null;
     ?>
-    <!-- Ajoutez la référence au fichier Bootstrap JavaScript (facultatif si vous n'utilisez pas les fonctionnalités JavaScript de Bootstrap) -->
+    <!-- Ajouter la référence au fichier Bootstrap JavaScript (facultatif si vous n'utilisez pas les fonctionnalités JavaScript de Bootstrap) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
