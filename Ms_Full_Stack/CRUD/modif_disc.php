@@ -9,7 +9,7 @@
 <body>
     <?php
     // Inclure le fichier de connexion à la base de données
-    include("connexion_bdd.php");
+    include("connexion.php");
 
     // Vérifier si l'ID du disque est spécifié dans l'URL
     if (isset($_GET['disc_id'])) {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Liste des Disques</title>
@@ -12,22 +13,30 @@
             flex-wrap: wrap;
             justify-content: space-between;
         }
+
         .disque {
-            width: 48%; /* Pour afficher deux disques par ligne avec un petit espace entre eux */
-            margin-bottom: 20px; /* Espacement entre les lignes de disques */
+            width: 48%;
+            /* Pour afficher deux disques par ligne avec un petit espace entre eux */
+            margin-bottom: 20px;
+            /* Espacement entre les lignes de disques */
             display: flex;
             align-items: center;
         }
+
         .disque img {
-            max-width: 25%; /* Pour réduire la taille de l'image */
+            max-width: 25%;
+            /* Pour réduire la taille de l'image */
             height: auto;
         }
+
         .details {
             flex-grow: 1;
-            padding: 0 20px; /* Espacement entre l'image et les détails */
+            padding: 0 20px;
+            /* Espacement entre l'image et les détails */
         }
     </style>
 </head>
+
 <body>
     <?php
     // Informations de connexion à la base de données
@@ -82,4 +91,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
