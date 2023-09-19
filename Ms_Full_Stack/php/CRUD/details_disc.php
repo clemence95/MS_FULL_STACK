@@ -24,7 +24,7 @@
 <body>
     <?php
     // Inclure le fichier de connexion à la base de données
-    include("./connexion_bdd.php");
+    include("connexion_bdd.php");
 
     // Vérifier si l'ID du disque est spécifié dans l'URL
     if (isset($_GET['disc_id'])) {
@@ -71,9 +71,9 @@
                 echo '<p>Genre : ' . $genre . '</p>';
                 echo '<p>Label : ' . $label . '</p>';
                 echo '<p>Prix : $' . $prix . '</p>'; // Affichage du prix
-                echo '<a class="btn btn-primary" href="update_form.php?disc_id=' . $disc_id . '">Modifier</a>';
+                echo '<a class="btn btn-primary" href="modif_disc.php?disc_id=' . $disc_id . '">Modifier</a>';
                 echo '<a class="btn btn-danger" href="delete_form.php?disc_id=' . $disc_id . '">Supprimer</a>'; // Lien de suppression
-                echo '<a class="btn btn-secondary" href="index.php">Retour</a>';
+                echo '<a class="btn btn-secondary" href="index_disc.php">Retour</a>';
                 echo '</div>';
                 echo '</div>';
             } else {
