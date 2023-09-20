@@ -1,6 +1,17 @@
 <?php
-// Inclure le fichier de connexion à la base de données
-include("connexion.php");
+
+$servername = "localhost"; // Adresse du serveur MySQL
+$username = "root"; // Nom d'utilisateur MySQL
+$password = ""; // Mot de passe MySQL
+$dbname = "the_district"; // Nom de la base de données
+
+// Créer une connexion à la base de données
+$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+
+// Définir le mode de gestion des erreurs PDO
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
 
 // Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
