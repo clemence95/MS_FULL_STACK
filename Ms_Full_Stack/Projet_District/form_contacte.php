@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets//css//style.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     </nav>
     <?php include './assets/php/banner.php'; ?>
 
-    <form class="row g-3" action="./assets//php//traitement_contacte.php" method="post" onsubmit="return validerFormulaire();">
+    <form class="row g-3" action="form_traitement_demande.php" method="post" onsubmit="return validerFormulaire();">
         <div class="col-md-4 mb-4">
             <input type="text" class="form-control" placeholder="Prénom" aria-label="prénom" name="prenom" id="prenom" >
             <span id="prenom_error"></span>
@@ -59,37 +59,6 @@
             <button type="submit" class="btn btn-primary" id="valide">Valider</button>
         </div>
     </form>
-    <script>
-    function validerFormulaire() {
-      const prenom = document.getElementById("prenom").value;
-      const nom = document.getElementById("nom").value;
-      const email = document.getElementById("email").value;
-      const telephone = document.getElementById("telephone").value;
-      const demande = document.getElementById("demande").value;
-      var regexEmail = /\S+@\S+\.\S+/;
-      if(prenom.length <1){
-        alert("veuillez mettre un prenom");
-        return false;
-      }
-      if(nom.length <1){
-        alert("veuillez mettre un nom");
-        return false;
-      }
-      if (!regexEmail.test(email)) {
-        alert("L'e-mail doit comporter au moins le caractère @. (obligatoire!)");
-        return false;
-      }
-      if (telephone.length != 10 ) {
-        alert("veuillez mettre un tel");
-        return false;
-      }
-      if (demande.length <1){
-        alert("veuillez mettre une demande");
-        return false;
-      }
-      return true;
-    }
-      </script>
     <footer>
         <?php include './assets/php/footer.php'; ?>
     </footer>
