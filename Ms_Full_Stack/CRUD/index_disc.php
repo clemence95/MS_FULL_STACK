@@ -59,7 +59,7 @@
         if ($result->rowCount() > 0) {
             $count = 0;
             echo '<h1>Liste des Disques (' . $result->rowCount() . ' disques)</h1>';
-            echo '<a class="btn btn-primary" href="add_form.php">Ajouter</a><hr>'; // Bouton Ajouter
+            echo '<a class="btn btn-primary" href="ajout_disc.php">Ajouter</a><hr>'; // Bouton Ajouter
             echo '<div class="disque-container">';
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="disque">';
