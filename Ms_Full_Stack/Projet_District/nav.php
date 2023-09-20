@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-3 mb-lg-0 sm-3">
                 <li class="nav-item pe-4">
-                    <a class="nav-link active" aria-current="page" href="./accueil.php">Accueil</a>
+                    <a class="nav-link active" aria-current="page" href="accueil.php">Accueil</a>
                 </li>
                 <li class="nav-item pe-4">
                     <a class="nav-link" href="#">Catégorie</a>
@@ -16,7 +16,7 @@
                     <a class="nav-link" href="#">Plats</a>
                 </li>
                 <li class="nav-item pe-4">
-                    <a class="nav-link" href="..\HTML\formulaire.html">Nous Contacter</a>
+                    <a class="nav-link" href="form_contacte.php">Nous Contacter</a>
                 </li>
                 <li class="nav-item pe-4">
                     <a class="btn btn-order rounded-1" href="#">Passer la commande</a>
