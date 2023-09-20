@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Redirection vers la page de liste
-        header("Location: index.php");
+        header("Location: index_disc.php");
         exit();
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();

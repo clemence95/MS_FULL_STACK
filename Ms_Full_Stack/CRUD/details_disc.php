@@ -72,7 +72,7 @@
                 echo '<p>Label : ' . $label . '</p>';
                 echo '<p>Prix : $' . $prix . '</p>'; // Affichage du prix
                 echo '<a class="btn btn-primary" href="modif_disc.php?disc_id=' . $disc_id . '">Modifier</a>';
-                echo '<a class="btn btn-danger" href="delete_form.php?disc_id=' . $disc_id . '">Supprimer</a>'; // Lien de suppression
+                echo '<a class="btn btn-danger" href="supp_disc.php?disc_id=' . $disc_id . '">Supprimer</a>'; // Lien de suppression
                 echo '<a class="btn btn-secondary" href="index_disc.php">Retour</a>';
                 echo '</div>';
                 echo '</div>';

@@ -39,7 +39,7 @@
 
                 // Formulaire de mise à jour
                 echo '<h1>Modifier le Disque</h1>';
-                echo '<form action="update_script.php" method="POST" enctype="multipart/form-data">';
+                echo '<form action="modif_traitement.php" method="post" enctype="multipart/form-data">';
                 echo '<input type="hidden" name="disc_id" value="' . $disc_id . '">';
                 echo '<div class="form-group">';
                 echo '<label for="titre">Titre :</label>';
