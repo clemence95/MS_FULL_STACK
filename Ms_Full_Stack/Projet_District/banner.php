@@ -2,7 +2,7 @@
     <div class="container-fluid my-5 py-4 d-flex justify-content-center align-items-center">
         <div class="video-container d-flex justify-content-center" style="width: 100%;">
             <video id="myVideo" class="d-block video rounded-5" autoplay muted loop style="width: 100%;">
-                <source src="/Ms_Full_Stack/assets/pizza-fond.mp4" type="video/mp4">
+                <source src="/Ms_Full_Stack//Projet_District//assets//pizza-fond.mp4" type="video/mp4">
                 Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
             </video>
         </div>

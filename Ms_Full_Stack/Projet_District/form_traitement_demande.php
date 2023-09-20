@@ -1,17 +1,16 @@
 <?php
 
-$servername = "localhost"; // Adresse du serveur MySQL
-$username = "root"; // Nom d'utilisateur MySQL
-$password = ""; // Mot de passe MySQL
-$dbname = "the_district"; // Nom de la base de données
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "the_district";
 
-// Créer une connexion à la base de données
-$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-
-// Définir le mode de gestion des erreurs PDO
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("La connexion à la base de données a échoué : " . $e->getMessage());
+}
 
 // ...
 // Vérifier si le formulaire a été soumis
