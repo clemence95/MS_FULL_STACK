@@ -15,14 +15,13 @@
 </head>
 
 <body>
-    <nav>
+    <header>
         <?php
         include 'nav.php';
+        include 'banner.php';
         ?>
-    </nav>
-    <?php
-    include 'banner.php';
-    ?>
+    </header>
+
     <section class="Catégories bg-dark-subtil Lugrasimo py-5">
         <h1 class="text-center dancing "><a href="#">Catégories</a></h1>
         <div class="container d-flex justify-content-center">

@@ -15,10 +15,10 @@
 </head>
 
 <body>
-    <nav>
+    <header>
         <?php include 'nav.php'; ?>
-    </nav>
     <?php include 'banner.php'; ?>
+    </header>
 
     <form class="row g-3" action="form_traitement_demande.php" method="post" onsubmit="return validerFormulaire();">
         <div class="col-md-4 mb-4">
