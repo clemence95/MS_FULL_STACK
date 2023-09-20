@@ -16,9 +16,9 @@
 
 <body>
     <nav>
-        <?php include './assets/php/nav.php'; ?>
+        <?php include 'nav.php'; ?>
     </nav>
-    <?php include './assets/php/banner.php'; ?>
+    <?php include 'banner.php'; ?>
 
     <form class="row g-3" action="form_traitement_demande.php" method="post" onsubmit="return validerFormulaire();">
         <div class="col-md-4 mb-4">
@@ -60,7 +60,7 @@
         </div>
     </form>
     <footer>
-        <?php include './assets/php/footer.php'; ?>
+        <?php include 'footer.php'; ?>
     </footer>
       <script src="./assets//js//script.js"></script>  
 </body>
