@@ -20,7 +20,7 @@
     </nav>
     <?php include './assets/php/banner.php'; ?>
 
-    <form class="row g-3" action="./form_traitement_demande.php" method="post" onsubmit="return validerFormulaire();">
+    <form class="row g-3" action="form_traitement_demande.php" method="post" onsubmit="return validerFormulaire();">
         <div class="col-md-4 mb-4">
             <input type="text" class="form-control" placeholder="Prénom" aria-label="prénom" name="prenom" id="prenom" >
             <span id="prenom_error"></span>
