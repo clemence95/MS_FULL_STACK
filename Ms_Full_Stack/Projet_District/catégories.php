@@ -15,119 +15,57 @@
 </head>
 
 <body>
-    <nav>
+    <header>
         <?php
         include './nav.php';
+        include './banner.php';
         ?>
-    </nav>
-    <?php
-    include './banner.php';
-    ?>
+    </header>
     <div class="d-flex justify-content-center couleur-navigation">
         <!--Début de la partie affichage des catégorie Image+Titre-->
-        <div class="container   text-center">
-            <div class="row d-flex justify-content-center fs-1 text-center ">
-                <p class="couleurslogan"><strong>Un large choix sur nos plats !</strong></p>
-            </div>
-            <div class="row">
-                <div class="img-cat col-md-4 mb-4 ">
-                    <a href="Plats.php#Asiatique">
-                        <img src="images_the_disctrict/category/asian_food_cat.jpg" class="d-block" alt="..." style="width:250px;height:250px;">
-                        <h4 class="couleurslogan">Asiatiques</h4>
-                    </a>
-                </div>
-                <div class="img-cat col-md-4 mb-4 ">
-                    <a href="Plats.php#Burger">
-                        <img src="images_the_disctrict/category/burger_cat.jpg" class="d-block" alt="..." style="width:250px;height:250px;">
-                        <h4 class="couleurslogan">Burgers</h4>
-                    </a>
-                </div>
-                <div class="img-cat  col-md-4 mb-4">
-                    <a href="Plats.php#Pâtes">
-                        <img src="images_the_disctrict/category/pasta_cat.jpg" class="d-block" alt="..." style="width:250px;height:250px;">
-                        <h4 class="couleurslogan">Pâtes</h4>
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="img-cat col-md-4 mb-4">
-                    <a href="Plats.php#Pizzas">
-                        <img src="images_the_disctrict/category/pizza_cat.jpg" class="d-block" alt="..." style="width:250px;height:250px;">
-                        <h4 class="couleurslogan">Pizzas</h4>
-                    </a>
-                </div>
-                <div class="img-cat col-md-4 mb-4">
-                    <a href="Plats.php#Salades">
-                        <img src="images_the_disctrict/category/salade_cat.jpg" class="d-block" alt="..." style="width:250px;height:250px;">
-                        <h4 class="couleurslogan">Salades</h4>
-                    </a>
-                </div>
-                <div class="img-cat col-md-4 mb-4">
-                    <a href="Plats.php#Sandwich">
-                        <img src="images_the_disctrict/category/sandwich_cat.jpg" class="d-block" alt="..." style="width:250px;height:250px;">
-                        <h4 class="couleurslogan">Sandwichs</h4>
-                    </a>
-                </div>
-            </div>
-            <div class="row d-none" id="secondRow">
-                <div class="img-cat col-md-4 mb-4">
-                    <a href="Plats.php#Veggies">
-                        <img src="images_the_disctrict/category/veggie_cat.jpg" class="d-block" alt="..." style="width:250px;height:250px;">
-                        <h4 class="couleurslogan">Veggies</h4>
-                    </a>
-                </div>
-                <div class="img-cat col-md-4 mb-4">
-                    <a href="Plats.php#Wraps">
-                        <img src="images_the_disctrict/category/wrap_cat.jpg" class="d-block" alt="..." style="width:250px;height:250px;">
-                        <h4 class="couleurslogan">Wraps</h4>
-                    </a>
-                </div>
-                <div class="img-cat col-md-4 mb-4">
-                    <a href="Plats.php#Kebab">
-                        <img src="images_the_disctrict/category/kebab.jpg" class="d-block" alt="..." style="width:250px;height:250px;">
-                        <h4 class="couleurslogan">Kebabs</h4>
-                    </a>
-                </div>
-            </div>
-            <div class="row d-none" id="thirdRow">
-                <div class="img-cat col-md-4 mb-4">
-                    <a href="Plats.php#Libanais">
-                        <img src="images_the_disctrict/category/libanais-unver-kebab-lille.jpg" class="d-block" alt="..." style="width:250px;height:250px;">
-                        <h4 class="couleurslogan">Libanais</h4>
-                    </a>
-                </div>
-                <div class="img-cat col-md-4 mb-4">
-                    <a href="Plats.php#Panini">
-                        <img src="images_the_disctrict/category/Panini.jpeg" class="d-block" alt="..." style="width:250px;height:250px;">
-                        <h4 class="couleurslogan">Paninis</h4>
-                    </a>
-                </div>
-                <div class="img-cat col-md-4 mb-4">
-                    <a href="Plats.php#Tacos">
-                        <img src="images_the_disctrict/category/Tacos.jpeg" class="d-block" alt="..." style="width:250px;height:250px;">
-                        <h4 class="couleurslogan">Tacos</h4>
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="img-cat col-12 text-center">
-                    <button id="loadMoreBtn" class="btn btn-primary">Afficher plus</button>
-                    <button id="showLessBtn" class="btn btn-secondary d-none">Afficher moins</button>
-                </div>
-            </div>
-        </div>
-    </div><!--Fin de la partie affichage des catégorie Image+Titre-->
+
+        <body>
+            <h1>Catégories</h1>
+            <ul>
+                <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "the_district";
+
+                try {
+                    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                } catch (PDOException $e) {
+                    die("La connexion à la base de données a échoué : " . $e->getMessage());
+                }
+
+                // Récupérer les catégories actives (jusqu'à 6 catégories)
+                $sql = "SELECT * FROM categorie WHERE active = 'Yes' LIMIT 6";
+                $stmt = $conn->query($sql);
+
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $id = $row['id'];
+                    $libelle = $row['libelle'];
+                    echo "<li><a href='categorie.php?id=$id'>$libelle</a></li>";
+                }
+
+                // Fermer la connexion à la base de données
+                $conn = null;
+                ?>
+            </ul>
+        </body>
 
 
 
 
 
-    <footer>
-        <?php
-        include './footer.php';
-        ?>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+        <footer>
+            <?php
+            include './footer.php';
+            ?>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
 </body>
 
 </html>
