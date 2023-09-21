@@ -17,28 +17,28 @@
 <body>
     <header>
         <?php include './nav.php'; ?>
-    <?php include './banner.php'; ?>
+        <?php include './banner.php'; ?>
     </header>
 
     <form class="row g-3" action="./form_traitement_demande.php" method="post" onsubmit="return validerFormulaire();">
         <div class="col-md-4 mb-4">
-            <input type="text" class="form-control" placeholder="Prénom" aria-label="prénom" name="prenom" id="prenom" >
+            <input type="text" class="form-control" placeholder="Prénom" aria-label="prénom" name="prenom" id="prenom">
             <span id="prenom_error"></span>
         </div>
         <div class="col-md-4 mb-4">
-            <input type="text" class="form-control" placeholder="Nom" aria-label="nom" name="nom" id="nom" >
+            <input type="text" class="form-control" placeholder="Nom" aria-label="nom" name="nom" id="nom">
             <span id="nom_error"></span>
         </div>
         <div class="col-md-5 mb-4">
-            <input type="email" class="form-control" placeholder="Email" name="email" id="email" >
+            <input type="email" class="form-control" placeholder="Email" name="email" id="email">
             <span id="mail_error"></span>
         </div>
         <div class="col-md-3 mb-4">
-            <input type="tel" class="form-control" placeholder="Téléphone" name="telephone" id="telephone" >
+            <input type="tel" class="form-control" placeholder="Téléphone" name="telephone" id="telephone">
             <span id="telephone_error"></span>
         </div>
         <div class="col-md-10 mb-4">
-            <textarea class="form-control" placeholder="Votre demande" id=demande name="demande" id="floatingTextarea2" style="height: 100px" ></textarea>
+            <textarea class="form-control" placeholder="Votre demande" id=demande name="demande" id="floatingTextarea2" style="height: 100px"></textarea>
             <span id=demande_error></span>
         </div>
         <div class="col-md-10">
@@ -48,7 +48,7 @@
     <footer>
         <?php include './footer.php'; ?>
     </footer>
-      <script src="./assets//js//script.js"></script>  
+    <script src="./assets//js//script.js"></script>
 </body>
 
 </html>
