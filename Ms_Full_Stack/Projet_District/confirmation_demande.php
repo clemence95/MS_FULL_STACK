@@ -12,7 +12,7 @@
         <p>Votre demande a été soumise avec succès !</p>
         <p>Merci pour votre demande. Nous allons traiter votre demande dans les plus brefs délais.</p>
         <p>Vous recevrez un email de confirmation à l'adresse que vous avez fournie.</p>
-        <a href="form_contacte.php" class="btn btn-primary">Retour à l'accueil</a>
+        <a href="./form_contacte.php" class="btn btn-primary">Retour à l'accueil</a>
     </div>
 </body>
 </html>

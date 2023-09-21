@@ -1,9 +1,9 @@
 <?php
 
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "the_district";
+$username = "admin";
+$password = "Afpa1234";
+$dbname = "The_district";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date_demande = date("Y-m-d H:i:s");
 
     // Préparer et exécuter la requête SQL pour ajouter la demande dans la base de données
-    $sql = "INSERT INTO demandes (prenom, nom, email, telephone, demande, date_demande) VALUES (:prenom, :nom, :email, :telephone, :demande, :date_demande)";
+    $sql = "INSERT INTO demande (prenom, nom, email, telephone, demande, date_demande) VALUES (:prenom, :nom, :email, :telephone, :demande, :date_demande)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':prenom', $prenom);
     $stmt->bindParam(':nom', $nom);
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         // La demande a été ajoutée avec succès à la base de données
         // Vous pouvez rediriger l'utilisateur vers une page de confirmation ou afficher un message de succès
-        header("Location: confirmation_demande.php"); // Redirection vers une page de confirmation
+        header("Location: ./confirmation_demande.php"); // Redirection vers une page de confirmation
         exit();
     } else {
         // Erreur lors de l'ajout de la demande
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     // Le formulaire n'a pas été soumis, rediriger l'utilisateur vers la page de contact
-    header("Location: form_contacte.php"); // Redirection vers la page de contact
+    header("Location:./form_contacte.php"); // Redirection vers la page de contact
     exit();
 }
 ?>

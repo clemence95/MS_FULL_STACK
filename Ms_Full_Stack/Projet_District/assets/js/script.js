@@ -11,7 +11,7 @@ function validerFormulaire() {
     document.getElementById('nom_error').textContent = '';
     document.getElementById('mail_error').textContent = '';
     document.getElementById('telephone_error').textContent = '';
-    document.getElementById('demande').textContent = '';
+    document.getElementById('demande_error').textContent = '';
 
     // Valider le champ Prénom
     if (prenom === '') {
@@ -41,7 +41,7 @@ function validerFormulaire() {
 
     // Valider le champ Demande
     if (demande === '') {
-        document.getElementById('demande').textContent = 'Saisir votre demande';
+        document.getElementById('demande_error').textContent = 'Saisir votre demande';
         return false;
     }
 
