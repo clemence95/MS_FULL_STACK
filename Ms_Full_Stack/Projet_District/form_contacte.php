@@ -24,37 +24,22 @@
         <div class="col-md-4 mb-4">
             <input type="text" class="form-control" placeholder="Prénom" aria-label="prénom" name="prenom" id="prenom" >
             <span id="prenom_error"></span>
-            <!-- <div class="invalid-feedback">
-                 Saisir votre Prénom
-            </div> -->
         </div>
         <div class="col-md-4 mb-4">
             <input type="text" class="form-control" placeholder="Nom" aria-label="nom" name="nom" id="nom" >
             <span id="nom_error"></span>
-            <!-- <div class="invalid-feedback">
-                Vous devez saisir votre Nom
-            </div> -->
         </div>
         <div class="col-md-5 mb-4">
             <input type="email" class="form-control" placeholder="Email" name="email" id="email" >
             <span id="mail_error"></span>
-            <!-- <div class="invalid-feedback">
-                Saisir une adresse email valide
-            </div> -->
         </div>
         <div class="col-md-3 mb-4">
             <input type="tel" class="form-control" placeholder="Téléphone" name="telephone" id="telephone" >
             <span id="telephone_error"></span>
-            <!-- <div class="invalid-feedback">
-                Saisir votre numéro de téléphone
-            </div> -->
         </div>
         <div class="col-md-10 mb-4">
             <textarea class="form-control" placeholder="Votre demande" id=demande name="demande" id="floatingTextarea2" style="height: 100px" ></textarea>
             <span id=demande_error></span>
-            <!-- <div class="invalid-feedback">
-                Saisir votre demande
-            </div> -->
         </div>
         <div class="col-md-10">
             <button type="submit" class="btn btn-primary" id="valide">Valider</button>

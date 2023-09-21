@@ -1,71 +1,78 @@
 <!DOCTYPE html>
-<html lang="fr">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheDestrit</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-    <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./style.css">
+    <title>Accueil</title>
 </head>
-
 <body>
-    <header>
+    <h1>Accueil</h1>
+    
+    <!-- Barre de recherche -->
+    <form action="recherche.php" method="GET">
+        <input type="text" name="q" placeholder="Rechercher un plat...">
+        <button type="submit">Rechercher</button>
+    </form>
+    
+    <!-- Tableau pour les catégories populaires -->
+    <h2>Catégories Populaires</h2>
+    <table>
+        <tr>
+            <th>Catégorie</th>
+        </tr>
         <?php
-        include './nav.php';
-        include './banner.php';
+        $servername = "localhost"; // Adresse du serveur MySQL
+        $username = "admin"; // Nom d'utilisateur MySQL
+        $password = "Afpa1234"; // Mot de passe MySQL
+        $dbname = "The_district"; // Nom de la base de données
+
+        // Créer une connexion à la base de données
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+
+        // Définir le mode de gestion des erreurs PDO
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Récupérer les catégories les plus populaires (jusqu'à 6 catégories)
+        $sql = "SELECT * FROM categorie WHERE active = 'Yes' ORDER BY id DESC LIMIT 6";
+        $stmt = $conn->query($sql);
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $libelle = $row['libelle'];
+            echo "<tr><td><a href='categorie.php?id=$id'>$libelle</a></td></tr>";
+        }
+
+        // Fermer la connexion à la base de données
+        $conn = null;
         ?>
-    </header>
-    <div class="d-flex justify-content-center couleur-navigation">
-        <!--Début de la partie affichage des catégorie Image+Titre-->
+    </table>
+    
+    <!-- Tableau pour les plats les plus vendus -->
+    <h2>Plats les Plus Vendus</h2>
+    <table>
+        <tr>
+            <th>Plat</th>
+            <th>Ventes</th>
+        </tr>
+        <?php
+        // Connexion à la base de données (à adapter comme précédemment)
 
-        <body>
-            <h1>Catégories</h1>
-            <ul>
-                <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "the_district";
+        // Récupérer les plats les plus vendus (par exemple, les 6 premiers)
+        $sql = "SELECT p.libelle AS plat, COUNT(c.id) AS ventes FROM commande c
+                JOIN plat p ON c.id_plat = p.id
+                GROUP BY c.id_plat
+                ORDER BY ventes DESC
+                LIMIT 6";
+        $stmt = $conn->query($sql);
 
-                try {
-                    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                } catch (PDOException $e) {
-                    die("La connexion à la base de données a échoué : " . $e->getMessage());
-                }
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $plat = $row['plat'];
+            $ventes = $row['ventes'];
+            echo "<tr><td>$plat</td><td>$ventes</td></tr>";
+        }
 
-                // Récupérer les catégories actives (jusqu'à 6 catégories)
-                $sql = "SELECT * FROM categorie WHERE active = 'Yes' LIMIT 6";
-                $stmt = $conn->query($sql);
-
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $id = $row['id'];
-                    $libelle = $row['libelle'];
-                    echo "<li><a href='categorie.php?id=$id'>$libelle</a></li>";
-                }
-
-                // Fermer la connexion à la base de données
-                $conn = null;
-                ?>
-            </ul>
-        </body>
-
-
-
-
-
-        <footer>
-            <?php
-            include './footer.php';
-            ?>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+        // Fermer la connexion à la base de données
+        $conn = null;
+        ?>
+    </table>
 </body>
-
 </html>
