@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
 </head>
+
 <body>
     <h1>Accueil</h1>
-    
+
     <!-- Barre de recherche -->
     <form action="recherche.php" method="GET">
         <input type="text" name="q" placeholder="Rechercher un plat...">
         <button type="submit">Rechercher</button>
     </form>
-    
+
     <!-- Tableau pour les catégories populaires -->
     <h2>Catégories Populaires</h2>
     <table>
@@ -37,6 +39,7 @@
         $stmt = $conn->query($sql);
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $id = $row['id'];
             $libelle = $row['libelle'];
             echo "<tr><td><a href='categorie.php?id=$id'>$libelle</a></td></tr>";
         }
@@ -45,7 +48,7 @@
         $conn = null;
         ?>
     </table>
-    
+
     <!-- Tableau pour les plats les plus vendus -->
     <h2>Plats les Plus Vendus</h2>
     <table>
@@ -54,7 +57,8 @@
             <th>Ventes</th>
         </tr>
         <?php
-        // Connexion à la base de données (à adapter comme précédemment)
+           // Créer une connexion à la base de données
+           $conn1 = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
         // Récupérer les plats les plus vendus (par exemple, les 6 premiers)
         $sql = "SELECT p.libelle AS plat, COUNT(c.id) AS ventes FROM commande c
@@ -62,7 +66,7 @@
                 GROUP BY c.id_plat
                 ORDER BY ventes DESC
                 LIMIT 6";
-        $stmt = $conn->query($sql);
+        $stmt = $conn1->query($sql);
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $plat = $row['plat'];
@@ -71,8 +75,9 @@
         }
 
         // Fermer la connexion à la base de données
-        $conn = null;
+        $conn1 = null;
         ?>
     </table>
 </body>
+
 </html>
