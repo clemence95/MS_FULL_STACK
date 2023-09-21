@@ -1,6 +1,16 @@
 <?php
 // Inclure le fichier de connexion à la base de données
-include("connexion.php");
+$servername = "localhost";
+$username = "admin";
+$password = "Afpa1234";
+$dbname = "record";
+
+try {
+    $conn1 = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+    $conn1->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("La connexion à la base de données a échoué : " . $e->getMessage());
+};
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
@@ -26,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Requête SQL pour obtenir l'ID de l'artiste en fonction de son nom
             $sqlArtisteId = "SELECT artist_id FROM artist WHERE artist_name = :artisteNom";
-            $stmtArtisteId = $conn->prepare($sqlArtisteId);
+            $stmtArtisteId = $conn1->prepare($sqlArtisteId);
             $stmtArtisteId->bindParam(":artisteNom", $artisteNom);
             $stmtArtisteId->execute();
             $rowArtisteId = $stmtArtisteId->fetch(PDO::FETCH_ASSOC);

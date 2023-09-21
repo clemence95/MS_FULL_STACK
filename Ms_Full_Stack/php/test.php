@@ -1,78 +1,61 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire de Contact</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <style>
-        body {
-            background-color: rgba(0, 0, 0, 0.55);
-        }
-    </style>
+    <title>Liste des Artistes et de Leurs Disques</title>
 </head>
 <body>
-    <section class="cc-menu merriweather py-5 centered-form"> 
-        <form id="monFormulaire" action="/Ms_Full_Stack//php//traitement_inscription.php" method="post">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1" class="form-label">Nom :</label>
-                            <div class="input-wrapper">
-                                <input type="text" class="form-control"  name="nom"
-                                    placeholder="Votre Nom :" required>
-                                <div class="text-red">Ce champ est obligatoire</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput3" class="form-label">Prénom :</label>
-                            <div class="input-wrapper">
-                                <input type="text" class="form-control"  name="prenom"
-                                    placeholder="Votre Prénom :">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-            <div class="container">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1" class="form-label">Email :</label>
-                            <div class="input-wrapper">
-                            <input type="email" class="form-control"  name="email"
-                            placeholder="Votre Email :">
+    <h1>Liste des Artistes et de Leurs Disques</h1>
+    <table border="1">
+        <tr>
+            <th>ID de l'Artiste</th>
+            <th>Artiste</th>
+            <th>Titre du Disque</th>
+            <th>Année</th>
+            <th>Image du Disque</th>
+            <th>Label</th>
+            <th>Genre</th>
+            <th>Prix</th>
+        </tr>
+        <?php
+        // Connexion à la base de données
+        $servername = "localhost"; // Adresse du serveur MySQL
+        $username = "admin"; // Nom d'utilisateur MySQL
+        $password = "Afpa1234"; // Mot de passe MySQL
+        $dbname = "record"; // Nom de la base de données
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput2" class="form-label">Mot de passe :</label>
-                            <div class="input-wrapper">
-                                <input type="password" class="form-control"  name="mot_de_passe"
-                                    placeholder="Votre mot de passe :" required>
-                                <div class="text-red">Ce champ est obligatoire</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="container-fluid">
-                <div class="text-end">
-                    <button class="btn btn-primary" type="submit" onclick="validerFormulaire(event)">Envoyer</button>
-                </div>
-            </div>
-        </form>
-    </section>
-    <script src="assets/js/contact.js"></script>
+        // Créer une connexion à la base de données
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+
+        // Définir le mode de gestion des erreurs PDO
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Sélectionner les informations des artistes et de leurs disques avec une jointure
+        $sql = "SELECT a.artist_id, a.artist_name, d.disc_title, d.disc_year, d.disc_picture, d.disc_label, d.disc_genre, d.disc_price
+                FROM artist a
+                JOIN disc d ON a.artist_id = d.artist_id";
+        $stmt = $conn->query($sql);
+
+        // Afficher les données
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo "<tr>";
+            echo "<td>{$row['artist_id']}</td>";
+            echo "<td>{$row['artist_name']}</td>";
+            echo "<td>{$row['disc_title']}</td>";
+            echo "<td>{$row['disc_year']}</td>";
+            echo "<td>{$row['disc_picture']}</td>";
+            echo "<td>{$row['disc_label']}</td>";
+            echo "<td>{$row['disc_genre']}</td>";
+            echo "<td>{$row['disc_price']}</td>";
+            echo "</tr>";
+        }
+
+        // Fermer la connexion à la base de données
+        $conn = null;
+        ?>
+    </table>
 </body>
 </html>
+
 
