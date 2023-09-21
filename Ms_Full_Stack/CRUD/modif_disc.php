@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Modifier le Disque</title>
     <!-- Ajouter la référence au fichier Bootstrap CSS (à télécharger ou à partir d'un CDN) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
     <?php
     // Inclure le fichier de connexion à la base de données
@@ -32,6 +34,8 @@
                 $label = $row['disc_label'];
                 $prix = $row['disc_price'];
                 $artist_id = $row['artist_id'];
+
+              
 
                 // Requête SQL pour récupérer la liste des artistes
                 $sqlArtists = "SELECT artist_id, artist_name FROM artist";
@@ -64,7 +68,7 @@
                 echo '<div class="form-group">';
                 echo '<label for="artiste">Artiste :</label>';
                 echo '<select class="form-control" id="artiste" name="artiste">';
-                
+
                 // Boucle pour construire la liste déroulante des artistes
                 while ($rowArtist = $resultArtists->fetch(PDO::FETCH_ASSOC)) {
                     $selected = ($rowArtist['artist_id'] == $artist_id) ? "selected" : "";
@@ -98,4 +102,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
