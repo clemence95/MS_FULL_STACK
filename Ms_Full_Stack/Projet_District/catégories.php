@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
+    <!-- Ajoutez les liens Bootstrap ici -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -16,68 +21,73 @@
         <button type="submit">Rechercher</button>
     </form>
 
-    <!-- Tableau pour les catégories populaires -->
-    <h2>Catégories Populaires</h2>
-    <table>
-        <tr>
-            <th>Catégorie</th>
-        </tr>
-        <?php
-        $servername = "localhost"; // Adresse du serveur MySQL
-        $username = "admin"; // Nom d'utilisateur MySQL
-        $password = "Afpa1234"; // Mot de passe MySQL
-        $dbname = "The_district"; // Nom de la base de données
+    <!-- Carrousel des catégories populaires -->
+    <div id="categoryCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <?php
+            $servername = "localhost";
+            $username = "admin";
+            $password = "Afpa1234";
+            $dbname = "The_district";
 
-        // Créer une connexion à la base de données
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            // Créer une connexion à la base de données
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
-        // Définir le mode de gestion des erreurs PDO
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // Récupérer les catégories les plus populaires (jusqu'à 6 catégories)
+            $sql = "SELECT * FROM categorie WHERE active = 'Yes' ORDER BY id DESC LIMIT 6";
+            $stmt = $conn->query($sql);
 
-        // Récupérer les catégories les plus populaires (jusqu'à 6 catégories)
-        $sql = "SELECT * FROM categorie WHERE active = 'Yes' ORDER BY id DESC LIMIT 6";
-        $stmt = $conn->query($sql);
+            $indicatorCount = 0;
+            $activeClass = 'active';
 
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $id = $row['id'];
-            $libelle = $row['libelle'];
-            echo "<tr><td><a href='categorie.php?id=$id'>$libelle</a></td></tr>";
-        }
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo "<li data-target='#categoryCarousel' data-slide-to='$indicatorCount' class='$activeClass'></li>";
+                $indicatorCount++;
+                $activeClass = '';
+            }
+            ?>
+        </ol>
 
-        // Fermer la connexion à la base de données
-        $conn = null;
-        ?>
-    </table>
+        <!-- Contenu du carrousel -->
+        <div class="carousel-inner">
+            <?php
+            // Réinitialiser le compteur et la classe active
+            $indicatorCount = 0;
+            $activeClass = 'active';
 
-    <!-- Tableau pour les plats les plus vendus -->
-    <h2>Plats les Plus Vendus</h2>
-    <table>
-        <tr>
-            <th>Plat</th>
-            <th>Ventes</th>
-        </tr>
-        <?php
-           // Créer une connexion à la base de données
-           $conn1 = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            // Réexécuter la requête pour récupérer les catégories
+            $stmt = $conn->query($sql);
 
-        // Récupérer les plats les plus vendus (par exemple, les 6 premiers)
-        $sql = "SELECT p.libelle AS plat, COUNT(c.id) AS ventes FROM commande c
-                JOIN plat p ON c.id_plat = p.id
-                GROUP BY c.id_plat
-                ORDER BY ventes DESC
-                LIMIT 6";
-        $stmt = $conn1->query($sql);
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $libelle = $row['libelle'];
+                $imageURL = $row['img/category/']; // Récupérer l'URL de l'image
 
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $plat = $row['plat'];
-            $ventes = $row['ventes'];
-            echo "<tr><td>$plat</td><td>$ventes</td></tr>";
-        }
+                // Afficher chaque catégorie avec son image dans le carrousel
+                echo "<div class='carousel-item $activeClass'>";
+                echo "<img src='$imageURL' alt='$libelle' class='d-block w-100'>";
+                echo "<h2>$libelle</h2>";
+                // Vous pouvez ajouter plus de contenu ici si nécessaire
+                echo "</div>";
 
-        // Fermer la connexion à la base de données
-        $conn1 = null;
-        ?>
-    </table>
+                $indicatorCount++;
+                $activeClass = ''; // Supprimer la classe 'active' après le premier élément Projet_District/assets/img/category/wrap_cat.jpg
+            }
+
+            // Fermer la connexion à la base de données
+            $conn = null;
+            ?>
+        </div>
+
+        <!-- Contrôles de navigation -->
+        <a class="carousel-control-prev" href="#categoryCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#categoryCarousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+    <!-- Le reste de votre contenu HTML -->
 </body>
 
 </html>
