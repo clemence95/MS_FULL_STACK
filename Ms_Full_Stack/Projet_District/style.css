@@ -145,3 +145,12 @@ form {
     color: rgb(172, 97, 97);
     width: 100%;
 }
+
+.small-img {
+    max-height: 25vh;
+    object-fit: cover;
+  }
+  .card{
+    max-width: 50vh;
+  }
+

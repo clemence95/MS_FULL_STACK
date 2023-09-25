@@ -60,11 +60,11 @@
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $libelle = $row['libelle'];
-                $imageURL = $row['img/category/']; // Récupérer l'URL de l'image
+                $imageURL = $row['./assets/img/category/']; // Récupérer l'URL de l'image
 
                 // Afficher chaque catégorie avec son image dans le carrousel
                 echo "<div class='carousel-item $activeClass'>";
-                echo "<img src='$imageURL' alt='$libelle' class='d-block w-100'>";
+                echo "<img src='./assets/img/category/' . $imageURL . ' alt='$libelle' class='d-block w-100'>";
                 echo "<h2>$libelle</h2>";
                 // Vous pouvez ajouter plus de contenu ici si nécessaire
                 echo "</div>";
