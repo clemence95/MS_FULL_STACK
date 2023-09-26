@@ -153,4 +153,7 @@ form {
   .card{
     max-width: 50vh;
   }
-
+.custom-image-size{
+    height: 25vh;
+    object-fit: cover;
+}

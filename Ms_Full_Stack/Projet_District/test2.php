@@ -7,6 +7,16 @@
     <title>Accueil</title>
     <!-- Add Bootstrap links here -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style> .custom-image-size {
+    object-fit: cover;
+    height: 35vh;
+    }
+    .card-row{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    </style>
 </head>
 
 <body>
@@ -18,8 +28,9 @@
         <button type="submit">Rechercher</button>
     </form>
 
-    <!-- Category Cards -->
-    <div class="row">
+<!-- Category Cards -->
+<div class="container">
+    <div class="card-row">
         <?php
         try {
             $servername = "localhost";
@@ -58,6 +69,8 @@
         }
         ?>
     </div>
+</div>
+
 
     <!-- The rest of your HTML content -->
 </body>
