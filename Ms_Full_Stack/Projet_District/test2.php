@@ -53,7 +53,7 @@
                 // Display each category as a card
                 echo '<div class="col-md-4 mb-4">';
                 echo '<div class="card">';
-                echo '<img src="assets/img/' . $imageURL . '" alt="' . $libelle . '" class="card-img-top">';
+                echo '<img src="assets/img/' . $imageURL . '" alt="' . $libelle . '" class="card-img-top custom-image-size">';
                 echo '<div class="card-body">';
                 echo "<h2 class='card-title'>$libelle</h2>";
                 // You can add more content here if needed

@@ -150,10 +150,14 @@ form {
     max-height: 25vh;
     object-fit: cover;
   }
-  .card{
-    max-width: 50vh;
-  }
+
 .custom-image-size{
-    height: 25vh;
+    height: 20vh;
     object-fit: cover;
+}
+.card-row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 150px;
 }

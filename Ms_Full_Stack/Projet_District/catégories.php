@@ -22,7 +22,8 @@
         ?>
     </header>
 
-    <div class="row">
+    <div class="container">
+    <div class="card-row">
         <?php
         try {
             $servername = "localhost";
@@ -30,11 +31,11 @@
             $password = "Afpa1234";
             $dbname = "The_district";
 
-            // Connexion
+            // Create a connection to the database
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            // Requete 
+            // Retrieve only the image and label columns
             $sql = "SELECT image, libelle FROM categorie WHERE active = 'Yes' ORDER BY id DESC LIMIT 6";
             $stmt = $conn->query($sql);
 
@@ -42,8 +43,8 @@
                 $libelle = $row['libelle'];
                 $imageURL = $row['image'];
 
-                // Cards
-                echo '<div class="col-md-3 mb-5">';
+                // Display each category as a card
+                echo '<div class="col-md-4 mb-4">';
                 echo '<div class="card">';
                 echo '<img src="assets/img/' . $imageURL . '" alt="' . $libelle . '" class="card-img-top custom-image-size">';
                 echo '<div class="card-body">';
@@ -56,11 +57,12 @@
         } catch (PDOException $e) {
             echo "Database connection failed: " . $e->getMessage();
         } finally {
-            // Fermeture de la base de donnée 
+            // Close the database connection
             $conn = null;
         }
         ?>
     </div>
+</div>
 
 
     <footer>
