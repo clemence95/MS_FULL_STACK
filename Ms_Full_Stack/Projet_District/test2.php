@@ -1,79 +1,62 @@
+<?php
+// Connexion à la base de données (remplacez avec vos propres informations de connexion)
+$host = "localhost";
+$username = "admin";
+$password = "Afpa1234";
+$database = "The_district";
+
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$database", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Récupérer les données de la table `categorie`
+    $queryCategories = "SELECT * FROM categorie WHERE active = 'Yes'";
+    $categories = $conn->query($queryCategories)->fetchAll(PDO::FETCH_ASSOC);
+
+    // Récupérer les données de la table `plat`
+    $queryPlats = "SELECT * FROM plat WHERE active = 'Yes'";
+    $plats = $conn->query($queryPlats)->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Erreur de connexion à la base de données : " . $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
-    <!-- Add Bootstrap links here -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style> .custom-image-size {
-    object-fit: cover;
-    height: 35vh;
-    }
-    .card-row{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
+    <title>Menu des plats</title>
+    <style>
+        /* Votre CSS ici */
     </style>
 </head>
-
 <body>
-    <h1>Accueil</h1>
+    <?php
+    // Boucle pour afficher les catégories
+    foreach ($categories as $category) {
+        echo '<div class="category">';
+        echo '<h2>' . $category['libelle'] . '</h2>';
+        echo '<img src="assets/img/' . $category['image'] . '" alt="' . $category['libelle'] . '" />';
+        // Vous pouvez ajouter plus de détails de catégorie ici si nécessaire
 
-    <!-- Search Bar -->
-    <form action="recherche.php" method="GET">
-        <input type="text" name="q" placeholder="Rechercher un plat...">
-        <button type="submit">Rechercher</button>
-    </form>
-
-<!-- Category Cards -->
-<div class="container">
-    <div class="card-row">
-        <?php
-        try {
-            $servername = "localhost";
-            $username = "admin";
-            $password = "Afpa1234";
-            $dbname = "The_district";
-
-            // Create a connection to the database
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            // Retrieve only the image and label columns
-            $sql = "SELECT image, libelle FROM categorie WHERE active = 'Yes' ORDER BY id DESC LIMIT 6";
-            $stmt = $conn->query($sql);
-
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $libelle = $row['libelle'];
-                $imageURL = $row['image'];
-
-                // Display each category as a card
-                echo '<div class="col-md-4 mb-4">';
-                echo '<div class="card">';
-                echo '<img src="assets/img/' . $imageURL . '" alt="' . $libelle . '" class="card-img-top custom-image-size">';
-                echo '<div class="card-body">';
-                echo "<h2 class='card-title'>$libelle</h2>";
-                // You can add more content here if needed
-                echo '</div>';
-                echo '</div>';
+        // Boucle pour afficher les plats de cette catégorie
+        echo '<div class="menu-items">';
+        foreach ($plats as $plat) {
+            if ($plat['id_categorie'] == $category['id']) {
+                echo '<div class="menu-item">';
+                echo '<h3>' . $plat['libelle'] . '</h3>';
+                echo '<p>' . $plat['description'] . '</p>';
+                echo '<img src="assets/img/' . $plat['image'] . '" alt="' . $plat['libelle'] . '" />';
+                echo '<p class="price">' . $plat['prix'] . '</p>';
+                echo '<button class="order-button">Commander</button>';
                 echo '</div>';
             }
-        } catch (PDOException $e) {
-            echo "Database connection failed: " . $e->getMessage();
-        } finally {
-            // Close the database connection
-            $conn = null;
         }
-        ?>
-    </div>
-</div>
-
-
-    <!-- The rest of your HTML content -->
+        echo '</div>'; // Fin de la division des plats
+        echo '</div>'; // Fin de la division de la catégorie
+    }
+    ?>
 </body>
-
 </html>
 

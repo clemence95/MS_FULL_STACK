@@ -22,40 +22,57 @@ try {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu des plats</title>
-    <style>
-        /* Votre CSS ici */
-    </style>
+    <title>TheDestrit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <?php
-    // Boucle pour afficher les catégories
-    foreach ($categories as $category) {
-        echo '<div class="category">';
-        echo '<h2>' . $category['libelle'] . '</h2>';
-        echo '<img src="assets/img/' . $category['image'] . '" alt="' . $category['libelle'] . '" />';
-        // Vous pouvez ajouter plus de détails de catégorie ici si nécessaire
+    <header>
+        <?php
+        include 'nav.php';
+        include 'banner.php';
+        ?>
+    </header>
 
-        // Boucle pour afficher les plats de cette catégorie
-        echo '<div class="menu-items">';
+    <div class="container">
+    <div class="row">
+        <?php
+        // Boucle pour afficher les plats en colonnes de hauteur variable
         foreach ($plats as $plat) {
-            if ($plat['id_categorie'] == $category['id']) {
-                echo '<div class="menu-item">';
-                echo '<h3>' . $plat['libelle'] . '</h3>';
-                echo '<p>' . $plat['description'] . '</p>';
-                echo '<p class="price">' . $plat['prix'] . '</p>';
-                echo '<button class="order-button">Commander</button>';
-                echo '</div>';
-            }
+            echo '<div class="col-md-6 mb-4">';
+            echo '<div class="card card-custom">';
+            echo '<img src="assets/img/' . $plat['image'] . '" alt="' . $plat['libelle'] . '" class="card-img-top custom-image-size">';
+            echo '<div class="card-body">';
+            echo '<h5 class="card-title">' . $plat['libelle'] . '</h5>';
+            echo '<p class="card-text">' . $plat['description'] . '</p>';
+            echo '<p class="card-text">Prix : ' . $plat['prix'] . ' €</p>';
+            echo '<a href="#" class="btn btn-primary">Commander</a>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
         }
-        echo '</div>'; // Fin de la division des plats
-        echo '</div>'; // Fin de la division de la catégorie
-    }
-    ?>
+        ?>
+    </div>
+</div>
+
+
+
+    <footer>
+        <?php
+        include 'footer.php';
+        ?>
+    </footer>
+
 </body>
 </html>
+
 

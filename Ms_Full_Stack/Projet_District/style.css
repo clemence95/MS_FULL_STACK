@@ -152,12 +152,17 @@ form {
   }
 
 .custom-image-size{
-    height: 20vh;
+    /* height: 15vh; */
     object-fit: cover;
+    overflow: hidden;
 }
-.card-row{
+.card{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    padding-bottom: 150px;
+    /* justify-content: space-between; */
+    /* padding-bottom: 10vh; */
+/* height: 40vh; */
+flex-direction: column;
+align-items: center;
 }
+
