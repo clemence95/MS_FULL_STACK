@@ -7,15 +7,16 @@
     font-family: 'Lugrasimo', sans-serif !important;
 }
 
-* {
+/* * {
     font-family: 'Lugrasimo', sans-serif !important;
     text-decoration: none !important;
-}
+} */
 
 .cc-navbar .nav-link {
     border-bottom: 1px solid transparent;
     transition: padding-bottom .4s ease-in-out, border-color .3s ease;
     /* evenement transition */
+    font-size: 25px;
 }
 
 .cc-navbar .nav-link:hover {
@@ -156,7 +157,7 @@ form {
     object-fit: cover;
     overflow: hidden;
 }
-.card{
+.custom-card{
     display: flex;
     flex-wrap: wrap;
     /* justify-content: space-between; */

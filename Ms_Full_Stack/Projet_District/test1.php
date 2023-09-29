@@ -28,6 +28,9 @@
             flex-direction: column;
             align-items: center;
         }
+        .custom-col{
+            justify-content: center;
+        }
     </style>
 </head>
 
@@ -42,7 +45,7 @@
     <section class="categories Dancing">
         <!-- Catégories populaires -->
         <h2 class="text-center dancing">Catégories Populaires</h2>
-        <div class="row">
+        <div class="row text-center d-flex">
             <?php
             // Établissez la connexion à votre base de données
             $conn = new mysqli("localhost", "admin", "Afpa1234", "The_district");
@@ -58,7 +61,7 @@
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo '<div class="col-md-6 mb-4">';
+                    echo '<div class="col-md-6 mb-4 mx-auto d-flex custom-col">';
                     echo '<div class="card custom-card">';
                     echo '<img src="assets/img/' . $row["image"] . '" class="card-img" alt="' . $row["libelle"] . '">';
                     echo '<div class="card-body">';
@@ -100,7 +103,7 @@
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo '<div class="col-md-6 mb-4">';
+                    echo '<div class="col-md-6 mb-4 d-flex custom-col">';
                     echo '<div class="card custom-card">';
                     echo '<img src="assets/img/' . $row["image"] . '" class="card-img" alt="' . $row["libelle"] . '">';
                     echo '<div class="card-body">';
