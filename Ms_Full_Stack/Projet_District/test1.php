@@ -60,12 +60,12 @@ $topSellers = $dao->getTopSellers();
         <div class="row text-center d-flex">
             <?php
             // Loop through the categories obtained from DAO //Affiche les catégories les plus populaires à partir du DAO
-            foreach ($result as $category) {
+            foreach ($categories as $category) {
                 echo '<div class="col-md-6 mb-4 mx-auto d-flex custom-col">';
                 echo '<div class="card custom-card">';
-                echo '<img src="assets/img/' . $category->categorie_image . '" class="card-img" alt="' . $category->categorie . '">';
+                echo '<img src="assets/img/' . $category['categorie_image'] . '" class="card-img" alt="' . $category['categorie'] . '">';
                 echo '<div class="card-body">';
-                echo '<h5 class="card-title">' . $category->categorie . '</h5>';
+                echo '<h5 class="card-title">' . $category['categorie'] . '</h5>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
@@ -83,13 +83,13 @@ $topSellers = $dao->getTopSellers();
             foreach ($topSellers as $topSeller) { 
                 echo '<div class="col-md-6 mb-4 d-flex custom-col">';
                 echo '<div class="card custom-card">';
-                echo '<img src="assets/img/' . $topSeller["image"] . '" class="card-img" alt="' . $topSeller["libelle"] . '">';
+                echo '<img src="assets/img/' . $topSeller["image"] . '" class="card-img" alt="' . $topSeller["plat"] . '">';
                 echo '<div class="card-body">';
-                echo '<h5 class="card-title">' . $topSeller["libelle"] . '</h5>';
+                echo '<h5 class="card-title">' . $topSeller["plat"] . '</h5>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
-            }
+            }                  
             ?>
         </div>
     </section>

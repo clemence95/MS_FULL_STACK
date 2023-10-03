@@ -4,16 +4,17 @@
 class DAO {
     private $conn;
 
-    // Constructor to establish the database connection //Construit et établit une connexion à la bdd
+    // Constructor to establish the database connection
     public function __construct() {
-        $this->conn = new mysqli("localhost", "admin", "Afpa1234", "The_district");
-
-        if ($this->conn->connect_error) {
-            die("Database connection failed: " . $this->conn->connect_error);
+        try {
+            $this->conn = new PDO("mysql:host=localhost;dbname=The_district", "admin", "Afpa1234");
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die("Database connection failed: " . $e->getMessage());
         }
     }
 
-    // Function to get a list of categories //Fonction pour récupérè la liste des catégories  les plus populaires limit à 6
+    // Function to get a list of categories
     public function getCategories() {
         $sql = "SELECT cat.id, cat.libelle AS categorie, cat.image AS categorie_image, SUM(c.quantite) AS quantite_vendue
                 FROM categorie cat
@@ -23,44 +24,31 @@ class DAO {
                 ORDER BY quantite_vendue DESC
                 LIMIT 6";
     
-        $result = $this->conn->query($sql);
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
     
-        if ($result->num_rows > 0) {
-            $categories = array();
-            while ($row = $result->fetch_assoc()) {
-                $categories[] = $row;
-            }
-            return $categories;
-        } else {
-            return array(); // Return an empty array if no categories are found
-        }
+        $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $categories;
     }
     
-
-    // Function to get a list of top-selling dishes //Fonction pour recupérè les plats les plus vendus de la bdd
+    // Function to get a list of top-selling dishes
     public function getTopSellers() {
-        $sql = "SELECT p.libelle AS plat, SUM(c.quantite) AS quantite_vendue
+        $sql = "SELECT p.libelle AS plat, p.image, SUM(c.quantite) AS quantite_vendue
         FROM plat p
-            INNER JOIN commande c ON p.id = c.id_plat
+        INNER JOIN commande c ON p.id = c.id_plat
         GROUP BY p.libelle
         ORDER BY quantite_vendue DESC 
         LIMIT 6";
-        $result = $this->conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            $topSellers = array();
-            while ($row = $result->fetch_assoc()) {
-                $topSellers[] = $row;
-            }
-            return $topSellers;
-        } else {
-            return array(); // Return an empty array if no top sellers are found
-        }
+        
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+    
+        $topSellers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $topSellers;
     }
 
-    // Close the database connection // Ferme la coonexion à la bdd
+    // Close the database connection
     public function closeConnection() {
-        $this->conn->close();
+        $this->conn = null; // Closes the connection
     }
 }
-?>
