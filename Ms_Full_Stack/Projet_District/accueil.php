@@ -1,17 +1,49 @@
+<?php
+include './dao.php';
+
+$dao = new DAO();
+
+// Get categories //Récupère les catégories
+$categories = $dao->getCategories();
+
+// Get top-selling dishes // Récupère les plats les pus vendus
+$topSellers = $dao->getTopSellers();
+
+// Close the database connection when done // Ferme la connexion à la bdd
+// $dao->closeConnection();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheDestrit</title>
+    <title>Page d'Accueil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./style.css">
+    <style>
+        /* Définissez une hauteur spécifique pour les images dans les cartes */
+        .card-img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Définissez une classe personnalisée pour les cartes pour contrôler leur taille */
+        .custom-card {
+            max-width: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .custom-col {
+            justify-content: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,82 +54,43 @@
         ?>
     </header>
 
-    <section class="Catégories bg-dark-subtil Lugrasimo py-5">
-        <h1 class="text-center dancing "><a href="#">Catégories</a></h1>
-        <div class="container d-flex justify-content-center">
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="card h-100">
-                        <img src="./assets//img//category//asian_food_cat.jpg" class="card-img-top custom-image" alt="Asia">
-                        <div class="card-body  custom-card-body">
-                            <h5 class="card-title text-center"><a href="#">Asia</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card h-100">
-                        <img src="./assets//img//category//burger_cat.jpg" class="card-img-top custom-image" alt="Burger">
-                        <div class="card-body  custom-card-body">
-                            <h5 class="card-title text-center"><a href="#">Burger</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card h-100">
-                        <img src="./assets//img//category//pizza_cat.jpg" class="card-img-top custom-image" alt="Pizza">
-                        <div class="card-body  custom-card-body">
-                            <h5 class="card-title text-center"><a href="#">Pizza</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card h-100">
-                        <img src="./assets//img//category//salade_cat.jpg" class="card-img-top custom-image" alt="Salade">
-                        <div class="card-body  custom-card-body">
-                            <h5 class="card-title text-center"><a href="#">Salade</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="categories Dancing">
+        <!-- Catégories populaires -->
+        <h2 class="text-center dancing">Catégories Populaires</h2>
+        <div class="row text-center d-flex">
+            <?php
+            // Loop through the categories obtained from DAO //Affiche les catégories les plus populaires à partir du DAO
+            foreach ($categories as $category) {
+                echo '<div class="col-md-6 mb-4 mx-auto d-flex custom-col">';
+                echo '<div class="card custom-card">';
+                echo '<img src="assets/img/' . $category['categorie_image'] . '" class="card-img" alt="' . $category['categorie'] . '">';
+                echo '<div class="card-body">';
+                echo '<h5 class="card-title">' . $category['categorie'] . '</h5>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            ?>
         </div>
     </section>
-    <section class="Catégories bg-dark-subtil Lugrasimo py-5">
-        <h1 class="text-center dancing"><a href="#">Plats</a></h1>
-        <div class="container d-flex justify-content-center">
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="card h-100">
-                        <img src="./assets//img//food//courgettes_farcies.jpg" class="card-img-top custom-image" alt="Courgette-farcie">
-                        <div class="card-body  custom-card-body">
-                            <h5 class="card-title text-center"><a href="#">Courgettes-Farcies</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card h-100">
-                        <img src="./assets//img//food//lasagnes_viande.jpg" class="card-img-top custom-image" alt="Lasagnes">
-                        <div class="card-body  custom-card-body">
-                            <h5 class="card-title text-center"><a href="#">Lasagnes</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card h-100">
-                        <img src="./assets//img//food//cesar_salad.jpg" class="card-img-top custom-image" alt="Salade-Cesar">
-                        <div class="card-body  custom-card-body">
-                            <h5 class="card-title text-center"><a href="#">Salade-Cesar</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card h-100">
-                        <img src="./assets//img//food//tagliatelles-saumon.webp" class="card-img-top custom-image" alt="Tagliatelles-Saumon">
-                        <div class="card-body  custom-card-body">
-                            <h5 class="card-title text-center"><a href="#">Tagliatelles-Saumon</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    <section class="top-sellers">
+        <!-- Plats les plus vendus -->
+        <h2 class="text-center dancing">Plats les Plus Vendus</h2>
+        <div class="row ">
+            <?php
+            // Loop through the top sellers obtained from DAO // Affiche les plats les plus vendus à partir du DAO
+            foreach ($topSellers as $topSeller) { 
+                echo '<div class="col-md-6 mb-4 d-flex custom-col">';
+                echo '<div class="card custom-card">';
+                echo '<img src="assets/img/' . $topSeller["image"] . '" class="card-img" alt="' . $topSeller["plat"] . '">';
+                echo '<div class="card-body">';
+                echo '<h5 class="card-title">' . $topSeller["plat"] . '</h5>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }                  
+            ?>
         </div>
     </section>
     <footer>
@@ -105,6 +98,7 @@
         include 'footer.php';
         ?>
     </footer>
+
 </body>
 
 </html>
