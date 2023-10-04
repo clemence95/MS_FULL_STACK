@@ -5,14 +5,17 @@ class Magasin {
     public $adresse;
     public $codePostal;
     public $ville;
+    public $modeRestauration; // Nouvelle propriété pour le mode de restauration 
 
     // Constructeur
-    public function __construct($nomMagasin, $adresse, $codePostal, $ville)
+    public function __construct($nomMagasin, $adresse, $codePostal, $ville, $modeRestauration)
     {
         $this->nomMagasin = $nomMagasin;
         $this->adresse = $adresse;
         $this->codePostal = $codePostal;
         $this->ville = $ville;
+        $this->modeRestauration = $modeRestauration; 
+        
     }
 }
 
@@ -62,6 +65,9 @@ class Employe {
     
         return $ordreDeTransfert;
     }
+    public function peutAvoirChequesVacances(){
+        return $this->anciennete() >= 1;
+    }
     
     // Méthode pour afficher les informations de l'employé
     public function afficherInfosEmploye() {
@@ -74,12 +80,20 @@ class Employe {
         echo "Ancienneté : " . $this->anciennete() . " années<br>";
         echo "Prime anciennete : " . $this->calculerPrimeAnnuelle() . "<br>";
         echo "Travaille dans le magasin " . $this->magasin->nomMagasin . " à " . $this->magasin->ville . ".<br>";
+        echo "Mode de restauration du magasin :" . $this->magasin->modeRestauration  . "<br>";
+        // Vérifie si l'employé peut disposer de chèques-vacances
+        if ($this->peutAvoirChequesVacances()){
+            echo $this->nom . " : peut disposer de chèques-vacances" . "<br>";
+        }  else {
+            echo $this->nom . " : ne peut pas disposer de chèques-vacances." . "<br>";
+        }
     }
+  
 }
 
 // Exemple d'utilisation de la classe Magasin
-$magasin1 = new Magasin("Magasin A", "123 Rue de la République", "75001", "Paris");
-$magasin2 = new Magasin("Magasin B", "456 Avenue des Champs-Élysées", "75008", "Paris");
+$magasin1 = new Magasin("Magasin A", "123 Rue de la République", "75001", "Paris", "Restaurant d'entreprise");
+$magasin2 = new Magasin("Magasin B", "456 Avenue des Champs-Élysées", "75008", "Paris", "Tickets Restaurants");
 
 // Exemple d'utilisation de la classe Employe avec les magasins associés
 $employe1 = new Employe("Doe", "John", "2020-01-15", "Développeur", 50, "Informatique", $magasin1);
