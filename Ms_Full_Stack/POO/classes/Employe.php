@@ -170,5 +170,8 @@ $employe2 = new Employe("Smith", "Jane", "2019-03-20", "Comptable", 45, "Comptab
 $employe1->afficherInfosEmploye();
 echo "<br>";
 $employe2->afficherInfosEmploye();
+
+// AARRGHHHHHHHHHHHHHHHH HORRIBLE !
+
 ?>
 
