@@ -119,6 +119,17 @@ class Employe {
         ];
     }
 
+    // Méthode pour calculer le montant total des chèques-cadeaux
+    public function calculerMontantTotalChequesCadeaux() {
+        $chequesNoel = $this->chequesNoelPourEnfants();
+        
+        $montantTotal = ($chequesNoel["cheques10"] * 20) +
+                        ($chequesNoel["cheques15"] * 30) +
+                        ($chequesNoel["cheques18"] * 50);
+                        
+        return $montantTotal;
+    }
+
     // Méthode pour afficher les informations de l'employé
     public function afficherInfosEmploye() {
         echo "Nom : " . $this->getNom() . "<br>";
@@ -129,7 +140,8 @@ class Employe {
         echo "Service : " . $this->service . "<br>";
         echo "Ancienneté : " . $this->anciennete() . " années<br>";
         echo "Prime ancienneté : " . $this->calculerPrimeAnnuelle() . "<br>";
-        echo "Travaille dans le magasin " . $this->magasin->getNomMagasin() . " à " . $this->magasin->getModeRestauration() . ".<br>";
+        echo "Travaille dans le magasin " . $this->magasin->getNomMagasin() . "<br>";
+        echo "Mode de restauration : "  . $this->magasin->getModeRestauration() . ".<br>";
     
         // Vérifie si l'employé peut disposer de chèques-vacances
         if ($this->peutAvoirChequesVacances()){
@@ -155,6 +167,9 @@ class Employe {
         } else {
             echo "Droit aux chèques Noël : Non<br>";
         }
+
+        // Afficher le montant total des chèques-cadeaux
+        echo "Montant total des chèques-cadeaux : " . $this->calculerMontantTotalChequesCadeaux() . " €<br>";
     }
 }
 
@@ -170,8 +185,6 @@ $employe2 = new Employe("Smith", "Jane", "2019-03-20", "Comptable", 45, "Comptab
 $employe1->afficherInfosEmploye();
 echo "<br>";
 $employe2->afficherInfosEmploye();
-
-// AARRGHHHHHHHHHHHHHHHH HORRIBLE !
-
 ?>
+
 
