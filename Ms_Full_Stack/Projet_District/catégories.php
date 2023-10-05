@@ -22,47 +22,44 @@
         ?>
     </header>
 
-    <div class="container">
-    <div class="card-row">
-        <?php
-        try {
-            $servername = "localhost";
-            $username = "admin";
-            $password = "Afpa1234";
-            $dbname = "The_district";
+    <section class="categories dancing">
+        <h2 class="text-center dancing">Catégories</h2>
+        <div class="row text-center d-flex">
+            <?php
+            try {
+                $servername = "localhost";
+                $username = "admin";
+                $password = "Afpa1234";
+                $dbname = "The_district";
 
-            // Create a connection to the database
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                // Create a connection to the database
+                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            // Retrieve only the image and label columns
-            $sql = "SELECT image, libelle FROM categorie WHERE active = 'Yes' ORDER BY id DESC LIMIT 6";
-            $stmt = $conn->query($sql);
-
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $libelle = $row['libelle'];
-                $imageURL = $row['image'];
-
-                // Display each category as a card
-                echo '<div class="col-md-4 mb-4">';
-                echo '<div class="card">';
-                echo '<img src="assets/img/' . $imageURL . '" alt="' . $libelle . '" class="card-img-top custom-image-size">';
-                echo '<div class="card-body">';
-                echo "<h2 class='card-title'>$libelle</h2>";
-                // You can add more content here if needed
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
+                // Retrieve only the image and label columns
+                $sql = "SELECT image, libelle FROM categorie WHERE active = 'Yes' ORDER BY id DESC LIMIT 6";
+                $stmt = $conn->query($sql);
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $libelle = $row['libelle'];
+                    $imageURL = $row['image'];
+                    echo '<div class="col-md-6 mb-4 d-flex custom-col">';
+                    echo '<div class="card custom-card">';
+                    echo '<img src="assets/img/' . $imageURL . '" alt="' . $libelle . '" class="card-img">';
+                    echo '<div class="card-body">';
+                    echo "<h2 class='card-title'>$libelle</h2>";
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            } catch (PDOException $e) {
+                echo "Database connection failed: " . $e->getMessage();
+            } finally {
+                // Close the database connection
+                $conn = null;
             }
-        } catch (PDOException $e) {
-            echo "Database connection failed: " . $e->getMessage();
-        } finally {
-            // Close the database connection
-            $conn = null;
-        }
-        ?>
-    </div>
-</div>
+            ?>
+        </div>
+    </section>
 
 
     <footer>

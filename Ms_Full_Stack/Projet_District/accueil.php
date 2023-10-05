@@ -10,7 +10,7 @@ $categories = $dao->getCategories();
 $topSellers = $dao->getTopSellers();
 
 // Close the database connection when done // Ferme la connexion à la bdd
-// $dao->closeConnection();
+ $dao->closeConnection();
 ?>
 
 <!DOCTYPE html>
@@ -24,26 +24,7 @@ $topSellers = $dao->getTopSellers();
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./style.css">
-    <style>
-        /* Définissez une hauteur spécifique pour les images dans les cartes */
-        .card-img {
-            height: 200px;
-            object-fit: cover;
-        }
 
-        /* Définissez une classe personnalisée pour les cartes pour contrôler leur taille */
-        .custom-card {
-            max-width: 300px;
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .custom-col {
-            justify-content: center;
-        }
-    </style>
 </head>
 
 <body>
@@ -54,7 +35,7 @@ $topSellers = $dao->getTopSellers();
         ?>
     </header>
 
-    <section class="categories Dancing">
+    <section class="categories dancing">
         <!-- Catégories populaires -->
         <h2 class="text-center dancing">Catégories Populaires</h2>
         <div class="row text-center d-flex">

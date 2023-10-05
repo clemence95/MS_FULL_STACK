@@ -57,7 +57,7 @@ body {
 }
 
 a {
-    color:darkgray;
+    color: darkgray;
     /* Couleur de lien par défaut */
     transition: color 0.3s ease;
     /* Ajoute une transition à la couleur */
@@ -101,8 +101,10 @@ a:hover {
 
 /* Ajoutez ce style à votre feuille de style CSS */
 .custom-image {
-    width: 100%; /* Largeur fixe */
-    height: 300px; /* Hauteur ajustée automatiquement pour maintenir les proportions */
+    width: 100%;
+    /* Largeur fixe */
+    height: 300px;
+    /* Hauteur ajustée automatiquement pour maintenir les proportions */
     object-fit: cover;
 }
 
@@ -150,20 +152,22 @@ form {
 .small-img {
     max-height: 25vh;
     object-fit: cover;
-  }
-
-.custom-image-size{
-    /* height: 15vh; */
-    object-fit: cover;
-    overflow: hidden;
 }
-.custom-card{
+
+.card-img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Définissez une classe personnalisée pour les cartes pour contrôler leur taille */
+.custom-card {
+    max-width: 300px;
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
-    /* padding-bottom: 10vh; */
-/* height: 40vh; */
-flex-direction: column;
-align-items: center;
+    flex-direction: column;
+    align-items: center;
 }
 
+.custom-col {
+    justify-content: center;
+}
