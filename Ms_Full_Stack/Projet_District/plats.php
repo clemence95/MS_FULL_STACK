@@ -1,5 +1,5 @@
 <?php
-// Connexion à la base de données (remplacez avec vos propres informations de connexion)
+// Connexion à la base de données
 $host = "localhost";
 $username = "admin";
 $password = "Afpa1234";
@@ -9,12 +9,8 @@ try {
     $conn = new PDO("mysql:host=$host;dbname=$database", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Récupérer les données de la table `categorie`
-    $queryCategories = "SELECT * FROM categorie WHERE active = 'Yes'";
-    $categories = $conn->query($queryCategories)->fetchAll(PDO::FETCH_ASSOC);
-
-    // Récupérer les données de la table `plat`
-    $queryPlats = "SELECT * FROM plat WHERE active = 'Yes'";
+    // Récupérer les données de la table `plat` limitée à 6 plats avec active = 'Yes'
+    $queryPlats = "SELECT * FROM plat WHERE active = 'Yes' LIMIT 6";
     $plats = $conn->query($queryPlats)->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Erreur de connexion à la base de données : " . $e->getMessage();
@@ -27,7 +23,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheDestrit</title>
+    <title>TheDistrict</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,8 +36,8 @@ try {
 <body>
     <header>
         <?php
-        include 'nav.php';
-        include 'banner.php';
+        include './nav.php';
+        include './banner.php';
         ?>
     </header>
     <section class="plats dancing">
@@ -49,7 +45,7 @@ try {
         <h2 class="text-center dancing">Nos plats</h2>
         <div class="row text-center d-flex">
             <?php
-            // Boucle pour afficher les plats en colonnes de hauteur variable
+            // Boucle pour afficher les 6 premiers plats en colonnes de hauteur variable
             foreach ($plats as $plat) {
                 echo '<div class="col-md-6 mb-4 custom-col">';
                 echo '<div class="card card-custom">';
@@ -68,7 +64,7 @@ try {
     </section>
     <footer>
         <?php
-        include 'footer.php';
+        include './footer.php';
         ?>
     </footer>
 
