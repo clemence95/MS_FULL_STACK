@@ -171,3 +171,6 @@ form {
 .custom-col {
     justify-content: center;
 }
+section {
+    padding-bottom: 10vh;
+}
