@@ -47,26 +47,6 @@ class DAO {
         return $topSellers;
     }
 
-// Modify the searchPlatsAndCategories method in your DAO class
-public function searchPlatsAndCategories($searchQuery) {
-    $sql = "SELECT 'plat' AS type, p.id AS id, p.libelle AS label, NULL AS description
-            FROM plat p
-            WHERE p.libelle LIKE :query
-            UNION
-            SELECT 'categorie' AS type, c.id AS id, c.libelle AS label, NULL AS description
-            FROM categorie c
-            WHERE c.libelle LIKE :query";
-
-    $stmt = $this->conn->prepare($sql);
-    $searchQuery = "%" . $searchQuery . "%";
-    $stmt->bindParam(':query', $searchQuery, PDO::PARAM_STR);
-    $stmt->execute();
-
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $results;
-}
-
-
 
     // Close the database connection
     public function closeConnection() {
