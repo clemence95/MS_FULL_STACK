@@ -16,12 +16,16 @@
                     <a class="nav-link dancing " href="./plats.php">Plats</a>
                 </li>
                 <li class="nav-item pe-4">
-                    <a class="nav-link dancing" href="./form_contacte.php">Nous Contacter</a>
+                    <a class="nav-link dancing" href="./form_contacte.php">Nous Contacter 📧</a>
                 </li>
                 <li class="nav-item pe-4">
-                    <a class="btn btn-order rounded-1 dancing" href="#">Passer la commande</a>
+                    <a class="nav-link dancing" href="./panier.php">Mon Panier 🛒</a>
+                </li>
+                <li class="nav-item pe-4">
+                    <a class="nav-link dancing" href="./connexion.php">Connexion</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+

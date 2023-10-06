@@ -40,7 +40,7 @@ $topSellers = $dao->getTopSellers();
         <h2 class="text-center dancing">Catégories Populaires</h2>
         <div class="row text-center d-flex">
             <?php
-            // Loop through the categories obtained from DAO //Affiche les catégories les plus populaires à partir du DAO
+            //Affiche les catégories les plus populaires à partir du DAO
             foreach ($categories as $category) {
                 echo '<div class="col-md-6 mb-4 mx-auto d-flex custom-col">';
                 echo '<div class="card custom-card">';
@@ -60,7 +60,7 @@ $topSellers = $dao->getTopSellers();
         <h2 class="text-center dancing">Plats les Plus Vendus</h2>
         <div class="row ">
             <?php
-            // Loop through the top sellers obtained from DAO // Affiche les plats les plus vendus à partir du DAO
+          // Affiche les plats les plus vendus à partir du DAO
             foreach ($topSellers as $topSeller) { 
                 echo '<div class="col-md-6 mb-4 d-flex custom-col">';
                 echo '<div class="card custom-card">';

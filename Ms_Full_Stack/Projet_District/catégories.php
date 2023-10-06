@@ -32,11 +32,11 @@
                 $password = "Afpa1234";
                 $dbname = "The_district";
 
-                // Create a connection to the database
+               
                 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                // Retrieve only the image and label columns
+                
                 $sql = "SELECT image, libelle FROM categorie WHERE active = 'Yes' ORDER BY id DESC LIMIT 6";
                 $stmt = $conn->query($sql);
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -54,7 +54,7 @@
             } catch (PDOException $e) {
                 echo "Database connection failed: " . $e->getMessage();
             } finally {
-                // Close the database connection
+              
                 $conn = null;
             }
             ?>
