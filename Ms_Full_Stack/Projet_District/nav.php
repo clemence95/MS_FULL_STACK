@@ -1,4 +1,4 @@
-<nav class="cc-navbar fixed-top navbar navbar-expand-lg navbar-dark md-3 w-100">
+<nav class="cc-navbar fixed-top navbar navbar-expand-lg navbar-dark md-3">
     <div class="container-fluid">
         <a class="navbar-brand text-uppercase mx-4 py-3 dancing" href="./accueil.php">The Destrict</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,16 +16,13 @@
                     <a class="nav-link dancing " href="./plats.php">Plats</a>
                 </li>
                 <li class="nav-item pe-4">
-                    <a class="nav-link dancing" href="./form_contacte.php">Nous Contacter 📧</a>
+                    <a class="nav-link dancing" href="./form_contacte.php">Nous Contacter</a>
                 </li>
                 <li class="nav-item pe-4">
-                    <a class="nav-link dancing" href="./panier.php">Mon Panier 🛒</a>
-                </li>
-                <li class="nav-item pe-4">
-                    <a class="nav-link dancing" href="./connexion.php">Connexion</a>
+                    <a class="btn btn-order rounded-1 dancing" href="#">Passer la commande</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script 
