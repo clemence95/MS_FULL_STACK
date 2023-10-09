@@ -22,26 +22,26 @@
     <form class=" form_user row g-3" action="./form_traitement_demande.php" method="post" onsubmit="return validerFormulaire1();">
         <div class="col-md-4 mb-4">
             <input type="text" class="form-control" placeholder="Prénom" aria-label="prénom" name="prenom" id="prenom">
-            <span id="prenom_error"></span>
+            <span class="text-danger" id="prenom_error"></span>
         </div>
         <div class="col-md-4 mb-4">
             <input type="text" class="form-control" placeholder="Nom" aria-label="nom" name="nom" id="nom">
-            <span id="nom_error"></span>
+            <span class="text-danger" id="nom_error"></span>
         </div>
         <div class="col-md-5 mb-4">
             <input type="email" class="form-control" placeholder="Email" name="email" id="email">
-            <span id="mail_error"></span>
+            <span class="text-danger" id="mail_error"></span>
         </div>
         <div class="col-md-3 mb-4">
             <input type="tel" class="form-control" placeholder="Téléphone" name="telephone" id="telephone">
-            <span id="telephone_error"></span>
+            <span class="text-danger" id="telephone_error"></span>
         </div>
         <div class="col-md-10 mb-4">
             <textarea class="form-control" placeholder="Votre demande" id=demande name="demande" id="floatingTextarea2" style="height: 100px"></textarea>
-            <span id=demande_error></span>
+            <span class="text-danger" id=demande_error></span>
         </div>
         <div class="col-md-10">
-            <button type="submit" class="btn btn-primary" id="valide">Valider</button>
+            <button  type="submit" class="btn btn-primary" id="valide">Valider</button>
         </div>
     </form>
     <footer>
