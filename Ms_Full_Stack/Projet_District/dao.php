@@ -19,7 +19,7 @@ class DAO {
         $sql = "SELECT cat.id, cat.libelle AS categorie, cat.image AS categorie_image, SUM(c.quantite) AS quantite_vendue
                 FROM categorie cat
                 INNER JOIN plat p ON cat.id = p.id_categorie
-                -- INNER JOIN commande c ON p.id = c.id_plat
+             INNER JOIN commande c ON p.id = c.id_plat
                 GROUP BY cat.id, cat.libelle, cat.image
                 ORDER BY quantite_vendue DESC
                 LIMIT 6";
