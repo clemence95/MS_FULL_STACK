@@ -112,7 +112,7 @@ a:hover {
     font-size: 36px;
 }
 
-form {
+.form_button {
     color: aliceblue;
     font-size: 20px;
     min-height: 100%;
@@ -120,9 +120,15 @@ form {
     padding-bottom: 150px;
     padding-top: 150px;
     justify-content: center;
-
+    /* flex-direction: column;
+    flex-wrap: nowrap; */
 }
-
+.form_user{
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
 .invalid-feedback {
     font-size: 20px;
     font-weight: bold;
