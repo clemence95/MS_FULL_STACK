@@ -127,6 +127,7 @@ a:hover {
     justify-content: center;
     align-items: center; 
     padding-bottom: 150px;
+    padding-top: 200px;
 }
 .invalid-feedback {
     font-size: 20px;

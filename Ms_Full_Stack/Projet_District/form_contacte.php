@@ -17,7 +17,6 @@
 <body>
     <header>
         <?php include './nav.php'; ?>
-        <?php include './banner.php'; ?>
     </header>
     <form class=" form_user row g-3" action="./form_traitement_demande.php" method="post" onsubmit="return validerFormulaire1();">
         <div class="col-md-4 mb-4">
