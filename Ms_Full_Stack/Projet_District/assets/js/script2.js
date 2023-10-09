@@ -1,29 +1,50 @@
 function validerFormulaire() {
-    const prenom = document.getElementById("prenom").value;
-    const nom = document.getElementById("nom").value;
-    const email = document.getElementById("email").value;
-    const telephone = document.getElementById("telephone").value;
-    const demande = document.getElementById("demande").value;
-    var regexEmail = /\S+@\S+\.\S+/;
-    if(prenom.length <1){
-      alert("veuillez mettre un prenom");
+  // Récupérer les valeurs des champs
+  var prenom = document.getElementById('prenom').value;
+  var nom = document.getElementById('nom').value;
+  var email = document.getElementById('email').value;
+  var telephone = document.getElementById('telephone').value;
+  var password = document.getElementById('password').value;
+
+  // Réinitialiser les messages d'erreur
+  document.getElementById('prenom_error').textContent = '';
+  document.getElementById('nom_error').textContent = '';
+  document.getElementById('email_error').textContent = '';
+  document.getElementById('telephone_error').textContent = '';
+  document.getElementById('password_error').textContent = '';
+
+  // Valider le champ Prénom
+  if (prenom === '') {
+      document.getElementById('prenom_error').textContent = 'Saisir votre Prénom';
       return false;
-    }
-    if(nom.length <1){
-      alert("veuillez mettre un nom");
-      return false;
-    }
-    if (!regexEmail.test(email)) {
-      alert("L'e-mail doit comporter au moins le caractère @. (obligatoire!)");
-      return false;
-    }
-    if (telephone.length != 10 ) {
-      alert("veuillez mettre un tel");
-      return false;
-    }
-    if (demande.length <1){
-      alert("veuillez mettre une demande");
-      return false;
-    }
-    return true;
   }
+
+  // Valider le champ Nom
+  if (nom === '') {
+      document.getElementById('nom_error').textContent = 'Vous devez saisir votre Nom';
+      return false;
+  }
+
+  // Valider le champ Email
+  var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  if (!emailRegex.test(email)) {
+      document.getElementById('email_error').textContent = 'Saisir une adresse email valide';
+      return false;
+  }
+
+  // Valider le champ Téléphone (10 chiffres)
+  var telephoneRegex = /^\d{10}$/; // 10 chiffres exactement
+  if (!telephoneRegex.test(telephone)) {
+      document.getElementById('telephone_error').textContent = 'Le numéro de téléphone doit contenir 10 chiffres';
+      return false;
+  }
+
+  // Valider le champ Password (au moins 6 caractères)
+  if (password.length < 6) {
+      document.getElementById('password_error').textContent = 'Le mot de passe doit contenir au moins 6 caractères';
+      return false;
+  }
+
+  // Si toutes les validations passent, le formulaire est soumis
+  return true;
+}

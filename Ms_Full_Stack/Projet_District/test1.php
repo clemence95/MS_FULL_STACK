@@ -11,7 +11,7 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Inscription</h1>
-        <form class="row g-3" action="traitement_inscription.php" method="post">
+        <form class="row g-3" action="./" method="post">
             <div class="col-md-6">
                 <label for="nom_client" class="form-label">Nom complet</label>
                 <input type="text" class="form-control" id="nom_client" name="nom_client" required>

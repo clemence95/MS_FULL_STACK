@@ -1,4 +1,4 @@
-function validerFormulaire() {
+function validerFormulaire1() {
     // Récupérer les valeurs des champs
     var prenom = document.getElementById('prenom').value;
     var nom = document.getElementById('nom').value;

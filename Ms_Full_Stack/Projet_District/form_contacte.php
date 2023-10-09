@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./style.css">
+     <link rel="stylesheet" href="./style.css"> 
 </head>
 
 <body>
@@ -19,8 +19,7 @@
         <?php include './nav.php'; ?>
         <?php include './banner.php'; ?>
     </header>
-
-    <form class="row g-3" action="./form_traitement_demande.php" method="post" onsubmit="return validerFormulaire();">
+    <form class=" form_user row g-3" action="./form_traitement_demande.php" method="post" onsubmit="return validerFormulaire1();">
         <div class="col-md-4 mb-4">
             <input type="text" class="form-control" placeholder="Prénom" aria-label="prénom" name="prenom" id="prenom">
             <span id="prenom_error"></span>
@@ -48,7 +47,8 @@
     <footer>
         <?php include './footer.php'; ?>
     </footer>
-    <script src="./assets//js//script.js"></script>
+
 </body>
+ <script src="./assets//js//script.js"></script> 
 
 </html>
