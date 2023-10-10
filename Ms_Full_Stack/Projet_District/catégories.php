@@ -28,9 +28,9 @@
             <?php
             try {
                 $servername = "localhost";
-                $username = "admin";
-                $password = "Afpa1234";
-                $dbname = "The_district";
+                $username = "clemence";
+                $password = "1234";
+                $dbname = "clemence";
 
                
                 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
