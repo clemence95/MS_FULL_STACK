@@ -12,9 +12,9 @@
 <body>
 <header>
         <?php include './nav.php'; ?>
-        <?php include './banner.php'; ?>
+        
     </header>
-<div class="container mt-5">
+<div class="container mt-5" id="insprition">
     <h1 class="text-center">Inscription</h1>
     <form class="row g-3" action="traitement_inscription.php" method="post" onsubmit="return validerFormulaire()">
         <div class="col-md-6">
